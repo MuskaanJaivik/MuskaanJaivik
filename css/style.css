@@ -28,7 +28,9 @@ body {
 }
 
 .main {
-  padding-left: 40%;
-  padding-right: 40%;
-  text-align: justify;
+  padding-left: 20%;
+  padding-right: 20%;
+  width: 50%;
+  text-align: center;
+  /*text-align: justify;*/
 }

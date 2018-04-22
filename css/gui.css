@@ -45,11 +45,8 @@
 /*-- Produce Card --*/
 
 .pr_frame {
-    margin: auto;
-    margin-top: 5vw;
-    /*width: 90vw;
-    height: 40vw;*/
-    padding: 2vw;
+    padding: 0px;
+    display: inline-block;
 }
 
 /* entire container, keeps perspective */

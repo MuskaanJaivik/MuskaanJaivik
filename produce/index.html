@@ -20,7 +20,7 @@
         <link href="../css/gui.css" rel="stylesheet" type="text/css">
         <link rel="icon" href="icon.png">
     </head>
-    <body>
+    <body onresize="Resize()">
         <ul id="navbar">
             <!-- <li id="navbar_home" style="float:left"><a href="index.html"></a></li> -->
             <li style="float:left; padding-left:1%; padding-right:1%; background-color: rgb(168,207,56);"><a href='../index.html' ><canvas id="logo" width="85" height="85"/></a></li>
@@ -78,6 +78,16 @@
         </div> -->
 
         <script src="../js/produce.js"></script>
+        <script>
+            function Resize() {
+                var ww = window.innerWidth;
+                var p = document.getElementsByClassName("card_container")[0];
+                var style = p.currentStyle || window.getComputedStyle(p);
+                var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
+                var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 12;
+                card_frame.setAttribute("style", "margin: " + margin + "px");
+            }
+        </script>
 
     </body>
 </html>

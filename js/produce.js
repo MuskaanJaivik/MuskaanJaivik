@@ -1,14 +1,25 @@
 /*
     Add Produce Cards
 */
+function doesFileExist(file_url) {
+    try {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', file_url, false);
+        http.send();
+        return http.status != 404;
+    }
+    catch(err) {
+        return false;
+    }
+}
 
 // card_frame
 var card_frame = document.createElement("div");
-card_frame.setAttribute("class", "card_frame");
+card_frame.setAttribute("class", "pr_frame");
 // add frame to body
 document.getElementsByTagName('body')[0].appendChild(card_frame);
 
-for (var i = 0; i != 100; i++) {
+for (var i = 0; i != 27; i++) {
 
     // card container
     var card_container = document.createElement("div");
@@ -25,7 +36,11 @@ for (var i = 0; i != 100; i++) {
 
     // image
     var img = document.createElement("img");
-    img.setAttribute("src", "../img/produce/rice.jpg");
+
+    if (doesFileExist("../img/produce/rice.jpg"))
+        img.setAttribute("src", "../img/produce/rice.jpg");
+    else
+        img.setAttribute("src", "../img/produce/placeholder.png");
     img.setAttribute("alt", "image of rice");
 
     // add image to front
@@ -54,7 +69,9 @@ for (var i = 0; i != 100; i++) {
 
     // back text
     var bt = document.createElement("p");
-    bt.appendChild(document.createTextNode("foofoo"));
+    //bt.appendChild(document.createTextNode("<b>Annual Production</b><br>700kg<br><br><b>Month Harvested</b><br>October<br><br><b>Availability</b><br>Full Year<br><br>"));
+    bt.appendChild(document.createTextNode("foo"));
+    bt.appendChild( document.createElement("b").appendChild(document.createTextNode("foo")) );
 
     // add text to back
     back.appendChild(bt);
@@ -68,3 +85,11 @@ for (var i = 0; i != 100; i++) {
     card_frame.appendChild(card_container);
 
 }
+
+//var ww = document.getElementsByTagName("body")[0].offsetWidth;
+var ww = window.innerWidth;
+var p = document.getElementsByClassName("card_container")[0];
+var style = p.currentStyle || window.getComputedStyle(p);
+var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
+var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 12;
+card_frame.setAttribute("style", "margin: " + margin + "px;");

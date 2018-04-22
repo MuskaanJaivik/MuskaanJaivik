@@ -13,14 +13,19 @@ function doesFileExist(file_url) {
     }
 }
 
-// card_frame
-var card_frame = document.createElement("div");
-card_frame.setAttribute("class", "pr_frame");
-// add frame to body
-document.getElementsByTagName('body')[0].appendChild(card_frame);
+function loadJSON(callback) {
+    var xobj = new XMLHttpRequest();
+    xobj.overrideMimeType("application/json");
+    xobj.open('GET', '../produce/produce.json', true);
+    xobj.onreadystatechange = function () {
+          if (xobj.readyState == 4 && xobj.status == "200") {
+            callback(xobj.responseText);
+          }
+    };
+    xobj.send(null); 
+}
 
-for (var i = 0; i != 27; i++) {
-
+function addCard(name, image, quantity, harvest, available) {
     // card container
     var card_container = document.createElement("div");
     card_container.setAttribute("class", "card_container");
@@ -37,8 +42,8 @@ for (var i = 0; i != 27; i++) {
     // image
     var img = document.createElement("img");
 
-    if (doesFileExist("../img/produce/rice.jpg"))
-        img.setAttribute("src", "../img/produce/rice.jpg");
+    if (doesFileExist(image))
+        img.setAttribute("src", image);
     else
         img.setAttribute("src", "../img/produce/placeholder.png");
     img.setAttribute("alt", "image of rice");
@@ -52,7 +57,7 @@ for (var i = 0; i != 27; i++) {
 
     // textbox text
     var tbt = document.createElement("p");
-    tbt.appendChild(document.createTextNode("foo"));
+    tbt.appendChild(document.createTextNode(name));
 
     // add text to textbox
     pr_textbox.appendChild(tbt);
@@ -69,11 +74,28 @@ for (var i = 0; i != 27; i++) {
 
     // back text
     var bt = document.createElement("p");
-    //bt.appendChild(document.createTextNode("<b>Annual Production</b><br>700kg<br><br><b>Month Harvested</b><br>October<br><br><b>Availability</b><br>Full Year<br><br>"));
-    bt.appendChild(document.createTextNode("foo"));
-    bt.appendChild( document.createElement("b").appendChild(document.createTextNode("foo")) );
+    var b0 = document.createElement("b");
+    b0.appendChild(document.createTextNode("Annual Production"));
+    bt.appendChild(b0);
+    bt.appendChild(document.createElement("br"));
+    bt.appendChild(document.createTextNode(quantity));
+    bt.appendChild(document.createElement("br"));
+    bt.appendChild(document.createElement("br"));
+    var b0 = document.createElement("b");
+    b0.appendChild(document.createTextNode("Month Harvested"));
+    bt.appendChild(b0);
+    bt.appendChild(document.createElement("br"));
+    bt.appendChild(document.createTextNode(harvest));
+    bt.appendChild(document.createElement("br"));
+    bt.appendChild(document.createElement("br"));
+    var b0 = document.createElement("b");
+    b0.appendChild(document.createTextNode("Availability"));
+    bt.appendChild(b0);
+    bt.appendChild(document.createElement("br"));
+    bt.appendChild(document.createTextNode(available));
+    bt.appendChild(document.createElement("br"));
+    bt.appendChild(document.createElement("br"));
 
-    // add text to back
     back.appendChild(bt);
 
     // add back to card
@@ -83,13 +105,29 @@ for (var i = 0; i != 27; i++) {
     card_container.appendChild(card);
 
     card_frame.appendChild(card_container);
-
 }
 
-//var ww = document.getElementsByTagName("body")[0].offsetWidth;
-var ww = window.innerWidth;
-var p = document.getElementsByClassName("card_container")[0];
-var style = p.currentStyle || window.getComputedStyle(p);
-var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
-var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 12;
-card_frame.setAttribute("style", "margin: " + margin + "px;");
+// card_frame
+var card_frame = document.createElement("div");
+card_frame.setAttribute("class", "pr_frame");
+// add frame to body
+document.getElementsByTagName('body')[0].appendChild(card_frame);
+
+loadJSON(function(response) {
+    // Parse JSON string into object
+    produce_data = JSON.parse(response);
+    var produce = produce_data.produce;
+
+    for (var i = 0; i != produce.length; i++) {
+        addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available);
+    }
+
+    var ww = window.innerWidth;
+    var p = document.getElementsByClassName("card_container")[0];
+    var style = p.currentStyle || window.getComputedStyle(p);
+    var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
+    var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 12;
+    card_frame.setAttribute("style", "margin: " + margin + "px;");
+
+
+});

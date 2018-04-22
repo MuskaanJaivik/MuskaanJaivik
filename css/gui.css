@@ -34,7 +34,7 @@
     text-decoration: none;
 }
 
-#navbar li:hover:not(.entry_active) {     /* :not() isn't working */
+#navbar li:hover:not(.entry_active) {
     background-color: lightgray;
 }
 

@@ -1,0 +1,7 @@
+{
+    "produce":[
+        { "name":"Rice", "quantity":"2000", "harvest":"September", "available":"Full Year" },
+        { "name":"Rajmah", "quantity":"700", "harvest":"October", "available":"Full Year" },
+        { "name":"Wheat", "quantity":"3000", "harvest":"June", "available":"Full Year" }
+    ]
+}

@@ -47,16 +47,24 @@
 .pr_frame {
     margin: auto;
     margin-top: 5vw;
-    width: 90vw;
-    height: 40vw;
-    padding: 1.125vw;
+    /*width: 90vw;
+    height: 40vw;*/
+    padding: 2vw;
 }
 
 /* entire container, keeps perspective */
 .card_container {
     perspective: 1000px;
-    width: 10vw;
-    height: 13vw;
+    width: 200px;
+    height: 260px;
+
+    margin: 30px;
+    display: inline-block;
+
+    /*max-width: 50vw;
+    max-height: 65vw;*/
+    max-width: 90vw;
+    max-height: 117vw;
 }
 
 /* flip speed goes here */
@@ -78,7 +86,7 @@
 
 /* flip the pane when hovered */
 .card_container:hover .card, .card_container.hover .card, .card_container.flip .card {
-    transform: rotateY(180deg);
+    transform: rotateY(-180deg);
 }
 
 .front, .back {
@@ -105,8 +113,6 @@
 /* back, initially hidden pane */
 .back {
     transform: rotateY(180deg);
-    
-    background-color: lightblue;
 }
 
 .front img {
@@ -119,13 +125,23 @@
 .front .pr_textbox {
     margin: 0px;
     padding: 0px;
-    height: 3vw;
+    /*height: 3vw;*/
+    height: 60px;
+    max-height: 27vw;
 }
 
 .front .pr_textbox p {
     margin: 0px;
     color: #64686a;
-    font-size: 1.3vw;
+    /*font-size: 1.3vw;*/
+    font-size: 25px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%); 
+}
+
+.back p {
+    color: #202121;
     position: relative;
     top: 50%;
     transform: translateY(-50%); 

@@ -2,6 +2,28 @@
     "produce":[
         { "name":"Rice", "quantity":"2000", "harvest":"September", "available":"Full Year" },
         { "name":"Rajmah", "quantity":"700", "harvest":"October", "available":"Full Year" },
-        { "name":"Wheat", "quantity":"3000", "harvest":"June", "available":"Full Year" }
+        { "name":"Wheat", "quantity":"3000", "harvest":"June", "available":"Full Year" },
+        { "name":"Maize", "quantity":"5000", "harvest":"August", "available":"Full Year" },
+        { "name":"Potato", "quantity":"2000", "harvest":"June", "available":"June-November" },
+        { "name":"Tomato", "quantity":"1000", "harvest":"June", "available":"June-November" },
+        { "name":"Lady Finger", "quantity":"300", "harvest":"June", "available":"June-November" },
+        { "name":"Brinjal", "quantity":"300", "harvest":"June", "available":"June-November" },
+        { "name":"Peas", "quantity":"6000", "harvest":"April", "available":"April-August" },
+        { "name":"Beans", "quantity":"1000", "harvest":"June", "available":"June-August" },
+        { "name":"Pumpkin", "quantity":"2000", "harvest":"June", "available":"June-November" },
+        { "name":"Bottle Gourd", "quantity":"1000", "harvest":"June", "available":"June-November" },
+        { "name":"Zucchini", "quantity":"1000", "harvest":"June", "available":"June-November" },
+        { "name":"Cucumber", "quantity":"5000", "harvest":"June", "available":"June-November" },
+        { "name":"Apple", "quantity":"4000", "harvest":"August", "available":"August-November" },
+        { "name":"Pear", "quantity":"3000", "harvest":"August", "available":"August-November" },
+        { "name":"Plum", "quantity":"2500", "harvest":"June", "available":"August-November" },
+        { "name":"Almond", "quantity":"1000", "harvest":"June", "available":"May-June" },
+        { "name":"Walnut", "quantity":"500", "harvest":"November", "available":"November-December" },
+        { "name":"Anardana", "quantity":"2000", "harvest":"August", "available":"August-December" },
+        { "name":"Grapes", "quantity":"200", "harvest":"August", "available":"August-September" },
+        { "name":"Ghee", "quantity":"1500", "harvest":"All", "available":"Full Year" },
+        { "name":"Lettuce", "quantity":"4000", "harvest":"May", "available":"December" },
+        { "name":"Garlic", "quantity":"5000", "harvest":"July", "available":"?" },
+        { "name":"Onion", "quantity":"5000", "harvest":"July", "available":"?" }
     ]
 }

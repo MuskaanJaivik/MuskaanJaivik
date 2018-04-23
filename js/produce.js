@@ -25,6 +25,16 @@ function loadJSON(callback) {
     xobj.send(null); 
 }
 
+function getRandomColor() {
+    //var letters = '0123456789ABCDEF';
+    var letters = '456789AB';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 8)];
+    }
+    return color;
+}
+
 function addCard(name, image, quantity, harvest, available) {
     // card container
     var card_container = document.createElement("div");
@@ -40,16 +50,19 @@ function addCard(name, image, quantity, harvest, available) {
     front.setAttribute("class", "front");
 
     // image
-    var img = document.createElement("img");
-
-    if (doesFileExist(image))
+    if (doesFileExist(image)) {
+        var img = document.createElement("img");
         img.setAttribute("src", image);
-    else
-        img.setAttribute("src", "../img/produce/placeholder.png");
-    img.setAttribute("alt", "image of rice");
-
-    // add image to front
-    front.appendChild(img);
+        img.setAttribute("alt", "image of " + name);
+        front.appendChild(img);
+    }
+    else {
+        var back = document.createElement("div");
+        //img.setAttribute("src", "../img/produce/placeholder.png");
+        back.setAttribute("style", "width: 200px; height: 200px; background-color: " + getRandomColor() + ";");
+        back.setAttribute("alt", "random color");
+        front.appendChild(back);
+    }
 
     // textbox
     var pr_textbox = document.createElement("div");
@@ -75,10 +88,15 @@ function addCard(name, image, quantity, harvest, available) {
     // back text
     var bt = document.createElement("p");
     var b0 = document.createElement("b");
+    b0.appendChild(document.createTextNode(name.toUpperCase()));
+    bt.appendChild(b0);
+    bt.appendChild(document.createElement("br"));
+    bt.appendChild(document.createElement("br"));
+    var b0 = document.createElement("b");
     b0.appendChild(document.createTextNode("Annual Production"));
     bt.appendChild(b0);
     bt.appendChild(document.createElement("br"));
-    bt.appendChild(document.createTextNode(quantity));
+    bt.appendChild(document.createTextNode(quantity+"kg"));
     bt.appendChild(document.createElement("br"));
     bt.appendChild(document.createElement("br"));
     var b0 = document.createElement("b");

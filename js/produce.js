@@ -39,7 +39,8 @@ function addCard(name, image, quantity, harvest, available) {
     // card container
     var card_container = document.createElement("div");
     card_container.setAttribute("class", "card_container");
-    card_container.setAttribute("ontouchstart", "this.classList.toggle('hover');")
+    //card_container.setAttribute("ontouchstart", "this.classList.toggle('hover');")
+    card_container.setAttribute("ontouchend", "this.classList.toggle('hover');")
 
     // card
     var card = document.createElement("div");
@@ -59,7 +60,7 @@ function addCard(name, image, quantity, harvest, available) {
     else {
         var back = document.createElement("div");
         //img.setAttribute("src", "../img/produce/placeholder.png");
-        back.setAttribute("style", "width: 200px; height: 200px; background-color: " + getRandomColor() + ";");
+        back.setAttribute("style", "width: 100%; height: 100%; background-color: " + getRandomColor() + ";");
         back.setAttribute("alt", "random color");
         front.appendChild(back);
     }
@@ -144,8 +145,8 @@ loadJSON(function(response) {
     var p = document.getElementsByClassName("card_container")[0];
     var style = p.currentStyle || window.getComputedStyle(p);
     var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
-    var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 12;
-    card_frame.setAttribute("style", "margin: " + margin + "px;");
-
+    var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 9;
+    card_frame.style.marginLeft = margin+ "px";
+    card_frame.style.marginRight = margin + "px";
 
 });

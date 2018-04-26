@@ -2,6 +2,7 @@
 /*-- Navbar --*/
 
 #navbar {
+    font-family: "Open Sans", sans-serif;
     top: 0px;
     position: sticky;
     margin: 0px;
@@ -10,12 +11,15 @@
     height: 70px;
     list-style-type: none;
     overflow: hidden;
-    background-color: whitesmoke;
+    /*background-color: whitesmoke;*/
+    background-color: white;
     box-shadow: 0px 2px 4px gray;
     z-index: 10;
+    font-weight: normal;
+    font-size: 17px;
 }
 
-#navbar li {
+#navbar li :not(#title) {
     float: right;
     padding-left: 2%;
     padding-right: 2%;
@@ -24,9 +28,7 @@
 }
 
 #navbar a {
-    font-weight: medium;
     display: block;
-    /*color: darkslategray;*/
     color: #202121;
     text-align: center;
     height: 100%;
@@ -34,7 +36,8 @@
     text-decoration: none;
 }
 
-#navbar li:hover:not(.entry_active) {
+/*#navbar li:hover:not(.entry_active) {*/
+#navbar li:hover {
     background-color: lightgray;
 }
 
@@ -42,104 +45,16 @@
     font-weight: bold;
 }
 
-/*-- Produce Card --*/
-
-.pr_frame {
-    padding: 0px;
-    display: inline-block;
+#navbar #title {
+    font-family: "Open Sans", sans-serif;
+    text-transform: uppercase;
+    /*color: rgb(66, 140, 116);*/
+    font-weight: bold;
+    position: absolute;
+    float: none;
+    font-size: 22px;
 }
 
-/* entire container, keeps perspective */
-.card_container {
-    perspective: 1000px;
-    width: 200px;
-    height: 260px;
-
-    margin: 30px;
-    display: inline-block;
-
-    /*max-width: 50vw;
-    max-height: 65vw;*/
-    max-width: 90vw;
-    max-height: 117vw;
-}
-
-/* flip speed goes here */
-.card {
-    width: 100%;
-    height: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-    background-color: snow;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    padding: 0px;
-
-	transition: 0.6s;
-	transform-style: preserve-3d;
-
-	position: relative;
-}
-
-/* flip the pane when hovered */
-.card_container:hover .card, .card_container.hover .card, .card_container.flip .card {
-    transform: rotateY(-180deg);
-}
-
-.front, .back {
-    width: 100%;
-    height: 100%;
-}
-
-/* hide back of pane during swap */
-.front, .back {
-	backface-visibility: hidden;
-
-	position: absolute;
-	top: 0;
-	left: 0;
-}
-
-/* front pane, placed above back */
-.front {
-	z-index: 2;
-	/* for firefox 31 */
-    transform: rotateY(0deg);
-}
-
-/* back, initially hidden pane */
-.back {
-    transform: rotateY(180deg);
-}
-
-.front img {
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    vertical-align: top;
-}
-
-.front .pr_textbox {
-    margin: 0px;
-    padding: 0px;
-    /*height: 3vw;*/
-    height: 60px;
-    max-height: 27vw;
-}
-
-.front .pr_textbox p {
-    margin: 0px;
-    color: #64686a;
-    /*font-size: 1.3vw;*/
-    font-size: 25px;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); 
-}
-
-.back p {
-    color: #202121;
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%); 
+@media screen and (max-width: 600px) {
+    #navbar li:not(:first-child) {display: none;}
 }

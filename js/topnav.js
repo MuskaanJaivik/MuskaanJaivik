@@ -1,108 +1,43 @@
-var body = document.getElementsByTagName("body")[0];
-var navbar = document.createElement("ul");
-navbar.setAttribute("id", "navbar");
-body.appendChild(navbar);
-
-// Add Entries
-//
-var home = document.createElement("li");
-var contact = document.createElement("li");
-var photos = document.createElement("li");
-var blog = document.createElement("li");
-var projects = document.createElement("li");
-var produce = document.createElement("li");
-var title = document.createElement("li");
-
-navbar.appendChild(home);
-navbar.appendChild(contact);
-navbar.appendChild(photos);
-navbar.appendChild(blog);
-navbar.appendChild(projects);
-navbar.appendChild(produce);
-navbar.appendChild(title);
-
-// Customize Entries
-//
 
 var path_suffix = "";
-if (body.id != "home-page")
+if (document.getElementsByTagName("body")[0].id != "home_page") { // might not work (script is loaded before body)
     path_suffix = "../";
-
-// Home
-home.setAttribute("style", "float:left; padding-left:1%; padding-right:1%; background-color: rgb(168,207,56);");
-home.setAttribute("id", "home_element");
-var a_home = document.createElement("a");
-a_home.setAttribute("href", path_suffix + "index.html");
-var logo_canvas = document.createElement("canvas");
-logo_canvas.setAttribute("id", "logo");
-logo_canvas.setAttribute("width", "85");
-logo_canvas.setAttribute("height", "85");
-a_home.appendChild(logo_canvas);
-home.appendChild(a_home);
-
-// Title
-title.setAttribute("id", "title");
-var a_title = document.createElement("a");
-a_title.setAttribute("href", path_suffix + "index.html");
-a_title.appendChild(document.createTextNode("Muskaan Jaivik SHG"));
-title.appendChild(a_title);
-title.setAttribute("style", "transform: translateX(50vw) translateX(-50%) translateX(" + (- (window.outerWidth - window.innerWidth) / 2) + "px);");
-
-// Contact
-var a_contact = document.createElement("a");
-a_contact.setAttribute("href", path_suffix + "contact/index.html");
-a_contact.appendChild(document.createTextNode("Contact"));
-contact.appendChild(a_contact);
-
-// Photos
-var a_photos = document.createElement("a");
-a_photos.setAttribute("href", path_suffix + "photos/index.html");
-a_photos.appendChild(document.createTextNode("Photos"));
-photos.appendChild(a_photos);
-
-// Blog
-var a_blog = document.createElement("a");
-a_blog.setAttribute("href", path_suffix + "blog/index.html");
-a_blog.appendChild(document.createTextNode("Blog"));
-blog.appendChild(a_blog);
-
-// Projects
-var a_projects = document.createElement("a");
-a_projects.setAttribute("href", path_suffix + "projects/index.html");
-a_projects.appendChild(document.createTextNode("Projects"));
-projects.appendChild(a_projects);
-
-// Produce
-var a_produce = document.createElement("a");
-a_produce.setAttribute("href", path_suffix + "produce/index.html");
-a_produce.appendChild(document.createTextNode("Produce"));
-produce.appendChild(a_produce);
-
-// Highlight active page
-//
-switch(body.id) {
-    case "produce-page":
-        produce.setAttribute("class", "entry_active");
-        break;
-    case "projects-page":
-        projects.setAttribute("class", "entry_active");
-        break;
-    case "blog-page":
-        blog.setAttribute("class", "entry_active");
-        break;
-    case "contact-page":
-        contact.setAttribute("class", "entry_active");
-        break;
-    case "photos-page":
-        photos.setAttribute("class", "entry_active");
-        break;
 }
 
-// Draw Logo
-drawLogo();
+var navbar = createBar();
+createTab("Contact", "contact/index.html")
+createTab("Photos", "photos/index.html")
+createLogo();
 
-function drawLogo() {
-    var canvas = document.getElementById("logo");
+function createBar() {
+    var bar = document.createElement("nav");
+    bar.setAttribute("id", "topnav");
+    document.getElementsByTagName("body")[0].appendChild(bar);
+    return bar;
+}
+
+function createTab(name, path) {
+    var tab = document.createElement("li");
+    tab.setAttribute("class", "tab");
+    tab.setAttribute("id", name.toLowerCase());
+    var link = document.createElement("a");
+    link.setAttribute("href", path_suffix + path);
+    link.appendChild(document.createTextNode(name));
+    tab.appendChild(link);
+    navbar.appendChild(tab);
+    return tab;
+}
+
+function createLogo() {
+    var logo = document.createElement("li");
+    logo.setAttribute("class", "logo");
+    navbar.appendChild(logo);
+    var canvas = document.createElement("canvas");
+    logo.appendChild(canvas);
+    drawLogo(canvas);
+}
+
+function drawLogo(canvas) {
     var w = canvas.width;
     var h = canvas.height;
     var scale = h/643;

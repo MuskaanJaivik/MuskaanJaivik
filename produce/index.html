@@ -1,37 +1,33 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-117704903-1"></script>
-        <script>
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-        
-          gtag('config', 'UA-117704903-1');
-        </script>
+    <head id="Produce">
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Muskaan Jaivik SHG</title>
-        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto" rel="stylesheet">        
-        <link href="../css/style.css" rel="stylesheet" type="text/css">
-        <link href="../css/gui.css" rel="stylesheet" type="text/css">
-        <link rel="icon" href="icon.png">
+        <meta charset="UTF-8">
+        <script src="../js/init_head.js" type="text/javascript"></script>
+
+        <link rel="stylesheet" href="../css/produce.css" rel="stylesheet">
     </head>
     <body id="produce-page" onresize="Resize()">
         <script src="../js/navbar.js"></script>
 
+        <div class="textsec">
+            <center>
+                asdföälkajsdöfojlka
+            </center>
+        </div>
+
         <script src="../js/produce.js"></script>
         <script>
             function Resize() {
-                var ww = window.innerWidth;
+                var puffer = 20;
+                var ww = window.innerWidth - 20;
                 var p = document.getElementsByClassName("card_container")[0];
                 var style = p.currentStyle || window.getComputedStyle(p);
                 var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
-                var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 12;
-                card_frame.setAttribute("style", "margin: " + margin + "px");
+                var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 9+ puffer/2;// - 12;
+
+                card_frame.style.marginLeft = margin+ "px";
+                card_frame.style.marginRight = margin + "px";
             }
         </script>
 

@@ -38,8 +38,8 @@ function createLogo() {
 }
 
 function drawLogo(canvas) {
-    var w = canvas.width;
-    var h = canvas.height;
+    var w = 200;//canvas.width;
+    var h = 200;//canvas.height;
     var scale = h/643;
     
     //var off_y = (h-463)/2;

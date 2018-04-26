@@ -1,6 +1,17 @@
 /*
     Add Produce Cards
 */
+
+// card_frame
+var card_frame = document.createElement("div");
+card_frame.setAttribute("class", "pr_frame");
+// add frame to body
+document.getElementsByTagName("body")[0].appendChild(card_frame);
+
+
+// swap test
+var tmp = document.getElementsByTagName("body")[0].getElementsByClassName("card_frame");
+
 function doesFileExist(file_url) {
     try {
         var http = new XMLHttpRequest();
@@ -22,11 +33,10 @@ function loadJSON(callback) {
             callback(xobj.responseText);
           }
     };
-    xobj.send(null); 
+    xobj.send(null);
 }
 
 function getRandomColor() {
-    //var letters = '0123456789ABCDEF';
     var letters = '456789AB';
     var color = '#';
     for (var i = 0; i < 6; i++) {
@@ -45,6 +55,7 @@ function addCard(name, image, quantity, harvest, available) {
     // card
     var card = document.createElement("div");
     card.setAttribute("class", "card");
+    card.setAttribute("id", name);
 
     // front
     var front = document.createElement("div");
@@ -125,12 +136,6 @@ function addCard(name, image, quantity, harvest, available) {
 
     card_frame.appendChild(card_container);
 }
-
-// card_frame
-var card_frame = document.createElement("div");
-card_frame.setAttribute("class", "pr_frame");
-// add frame to body
-document.getElementsByTagName('body')[0].appendChild(card_frame);
 
 loadJSON(function(response) {
     // Parse JSON string into object

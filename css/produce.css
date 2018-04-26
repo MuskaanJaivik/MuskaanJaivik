@@ -103,7 +103,7 @@
     height: 60px;
     max-height: 23.08%;
 
-    background: rgba(150, 150, 150, 0.7);
+    background: rgba(150, 150, 150, 0.78);
     z-index: 4;
     transform: translateY(-100%);
 }

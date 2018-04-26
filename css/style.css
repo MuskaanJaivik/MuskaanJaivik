@@ -49,4 +49,8 @@ body {
   .textsec {
     max-width: 30em;
   }
+
+  .textsec center {
+    text-align: left;
+  }
 }

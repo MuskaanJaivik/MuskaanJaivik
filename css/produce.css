@@ -15,17 +15,25 @@
     .front .pr_textbox p {
         font-size: 25px;
     }
+
+    .back p {
+        font-size: 16px;
+    }
 }
 
 /* Small Screen */
 @media only screen and (max-width: 477px) {
     .card_container {
         width: 42vw;
-        height: 58.5vw;
+        height: 54.5vw;
     }
 
     .front .pr_textbox p {
         font-size: 5.25vw;
+    }
+
+    .back p {
+        font-size: 3.35vw;
     }
 }
 
@@ -115,5 +123,5 @@
     color: #202121;
     position: relative;
     top: 50%;
-    transform: translateY(-50%); 
+    transform: translateY(-51%); 
 }

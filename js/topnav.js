@@ -33,13 +33,15 @@ function createLogo() {
     logo.setAttribute("class", "logo");
     navbar.appendChild(logo);
     var canvas = document.createElement("canvas");
+    canvas.offsetWidth = 85;
+    canvas.offsetHeight = 85;
     logo.appendChild(canvas);
     drawLogo(canvas);
 }
 
 function drawLogo(canvas) {
-    var w = 200;//canvas.width;
-    var h = 200;//canvas.height;
+    //var w = 85;//canvas.width;
+    //var h = 85;//canvas.height;
     var scale = h/643;
     
     //var off_y = (h-463)/2;

@@ -1,13 +1,13 @@
 
-var path_suffix = "";
+/*var path_suffix = "";
 if (document.getElementsByTagName("body")[0].id != "home_page") { // might not work (script is loaded before body)
     path_suffix = "../";
-}
+}*/
 
 var navbar = createBar();
-createTab("Contact", "contact/index.html")
-createTab("Photos", "photos/index.html")
-createLogo();
+createTab("Contact", "/contact/")
+createTab("Photos", "/photos/")
+//createLogo();
 
 function createBar() {
     var bar = document.createElement("nav");
@@ -21,7 +21,7 @@ function createTab(name, path) {
     tab.setAttribute("class", "tab");
     tab.setAttribute("id", name.toLowerCase());
     var link = document.createElement("a");
-    link.setAttribute("href", path_suffix + path);
+    link.setAttribute("href", path);
     link.appendChild(document.createTextNode(name));
     tab.appendChild(link);
     navbar.appendChild(tab);
@@ -33,13 +33,16 @@ function createLogo() {
     logo.setAttribute("class", "logo");
     navbar.appendChild(logo);
     var canvas = document.createElement("canvas");
+    //canvas.style.width = "200px";
+    //canvas.style.height = "100px";
+    canvas.setAttribute("width", "100");
+    canvas.setAttribute("height", "100");
     logo.appendChild(canvas);
     drawLogo(canvas);
 }
 
 function drawLogo(canvas) {
-    var w = 200;//canvas.width;
-    var h = 200;//canvas.height;
+    var h = canvas.height;
     var scale = h/643;
     
     //var off_y = (h-463)/2;

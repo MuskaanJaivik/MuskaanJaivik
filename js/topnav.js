@@ -1,18 +1,74 @@
 
-/*var path_suffix = "";
-if (document.getElementsByTagName("body")[0].id != "home_page") { // might not work (script is loaded before body)
-    path_suffix = "../";
-}*/
-
+var container = createNavContainer();
 var navbar = createBar();
-createTab("Contact", "/contact/")
-createTab("Photos", "/photos/")
-//createLogo();
+
+// Logo
+//
+var logo = createLogoContainer();
+// Drawing
+var logo_draw = document.createElement("canvas");
+logo_draw.setAttribute("id", "logo_draw");
+logo_draw.setAttribute("width", "100px");
+logo_draw.setAttribute("height", "100");
+drawLogo(logo_draw);
+logo.appendChild(logo_draw);
+// Text
+var logo_text = document.createElement("div");
+logo_text.setAttribute("id", "logo_text");
+logo_text.appendChild(document.createTextNode("MUSKAAN JAIVIK SHG"));
+logo.appendChild(logo_text);
+
+// Top Nav Entries
+//
+var contact = createTab("Contact", "/contact/")
+var photos = createTab("Photos", "/photos/")
+var blog = createTab("Blog", "/blog/")
+var projects = createTab("Project", "/projects/")
+var produce = createTab("Produce", "/produce/")
+
+// Set Active
+switch (document.getElementsByTagName("body")[0].getAttribute("id")) {
+    case ("home-page"):
+        logo.setAttribute("id", "active");
+    case ("contact-page"):
+        contact.setAttribute("id", "active");
+        break;
+    case ("home-page"):
+        photos.setAttribute("id", "active");
+        break;
+    case ("home-page"):
+        blog.setAttribute("id", "active");
+        break;
+    case ("home-page"):
+        projects.setAttribute("id", "active");
+        break;
+    case ("home-page"):
+        produce.setAttribute("id", "active");
+        break;
+}
+
+// Hamburger Icon
+createHamburgerIcon();
+
+function createNavContainer() {
+    var container = document.createElement("div");
+    container.setAttribute("id", "topnav_container");
+    document.getElementsByTagName("body")[0].appendChild(container);
+    return container;
+}
+
+function createLogoContainer() {
+    var logo_container = document.createElement("div");
+    logo_container.setAttribute("class", "logo_container");
+    container.appendChild(logo_container);
+    container.setAttribute("class", "closed");
+    return logo_container;
+}
 
 function createBar() {
-    var bar = document.createElement("nav");
+    var bar = document.createElement("div");
     bar.setAttribute("id", "topnav");
-    document.getElementsByTagName("body")[0].appendChild(bar);
+    container.appendChild(bar);
     return bar;
 }
 
@@ -41,12 +97,39 @@ function createLogo() {
     drawLogo(canvas);
 }
 
+function createHamburgerIcon() {
+    var icon = document.createElement("button");
+    icon.setAttribute("class", "hamburger hamburger--spin");
+    icon.setAttribute("type", "button");
+    container.appendChild(icon);
+    var span = document.createElement("span");
+    span.setAttribute("class", "hamburger-box");
+    icon.appendChild(span);
+    var span_inner = document.createElement("span");
+    span_inner.setAttribute("class", "hamburger-inner");
+    span.appendChild(span_inner);
+
+    icon.addEventListener("click", function(){
+        if (!icon.getAttribute("class").includes("is-active")) {
+            icon.setAttribute("class", icon.getAttribute("class") + " is-active");
+            container.setAttribute("class", "extended");
+        }
+        else {
+            icon.setAttribute("class", icon.getAttribute("class").replace(" is-active", ""));
+            container.setAttribute("class", "closed");
+        }
+    });
+}
+
 function drawLogo(canvas) {
     var h = canvas.height;
-    var scale = h/643;
+    var w = canvas.width;
+    //var scale = h/643;
+    var scale = w/643;
     
     //var off_y = (h-463)/2;
-    var off_y = (h-scale*463/1.5)/2;
+    //var off_y = (h-scale*463/1.5)/2;
+    var off_y = (h-scale)/2;
     var top_w = 112;
     var top_h = 54;
     var off_interseg_y = top_h+4 + off_y;

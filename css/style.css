@@ -3,7 +3,7 @@
 
 
 html {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: whitesmoke;
 }
 
@@ -33,7 +33,7 @@ body {
 
 .textsec {
   color: #555555;
-  font-family: "Robot", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 20px;
   line-height: 1.6;
   padding-left: .5em;

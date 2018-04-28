@@ -26,6 +26,7 @@ AddFont("//fonts.googleapis.com/css?family=Roboto");
 AddCSS("style");
 AddCSS("gui");
 AddCSS("topnav");
+AddCSS("hamburgers");
 
 // Icon
 var icon = AddElement("link");

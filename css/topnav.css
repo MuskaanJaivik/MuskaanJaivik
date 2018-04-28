@@ -191,8 +191,8 @@
         margin-right: 0px;
     }
 
-    #topnav {
-        transition: all 1s;
+    .closed #topnav {
+        display: none;
     }
 
     .extended #topnav {

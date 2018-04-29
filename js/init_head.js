@@ -19,12 +19,13 @@ vp.setAttribute("name", "viewport");
 vp.setAttribute("content", "width=device-width, initial-scale=1.0");
 
 // Fonts
-AddFont("https://fonts.googleapis.com/css?family=Open+Sans");
-AddFont("//fonts.googleapis.com/css?family=Roboto");
+AddExternCSS("https://fonts.googleapis.com/css?family=Open+Sans");
+AddExternCSS("https://fonts.googleapis.com/css?family=Roboto");
+AddExternCSS("https://fonts.googleapis.com/css?family=Slabo+27px");
+AddExternCSS("https://fonts.googleapis.com/css?family=Laila");
 
 // CSS
 AddCSS("style");
-AddCSS("gui");
 AddCSS("topnav");
 AddCSS("hamburgers");
 
@@ -55,7 +56,7 @@ function AddCSS(file) {
     css.setAttribute("type", "text/css");
 }
 
-function AddFont(url) {
+function AddExternCSS(url) {
     var css = AddElement("link");
     css.setAttribute("href", url);
     css.setAttribute("rel", "stylesheet");

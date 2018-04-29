@@ -5,36 +5,55 @@
         <meta charset="UTF-8">
         <script src="js/init_head.js" type="text/javascript"></script>
 
+        <link rel="stylesheet" href="css/mpstyle.css" rel="stylesheet">
+
     </head>
     <body id="home-page">
-
-        <!--<script src="js/navbar.js"></script>-->
-
+        <!--
         <center style="font-size: 15px; background-color: whitesmoke; color: #555555; margin: 10px;">
             This website is currently under construction. Everything you see here is a prototype.
             If you have any feedback or questions please mail at 
             <a href="mailto:mathis@muskaanjaivik.com?Subject=Feedback%20MJSHG%20Website" target="_top">mathis@muskaanjaivik.com</a>.
-        </center>
+        </center>-->
 
         <script src="js/topnav.js"></script>
 
         <div class="banner">
-            <img class="banner_image" src="img/hills1.jpg" alt="picture of beans">
+            <div id="banner_text"><span>Welcome to</span><span>Muskaan Jaivik SHG</span></div>
         </div>
 
-        <div class="textsec">
-            <p>
-                We are a group of organic farmers in beautiful Pangna valley in Himachal Pradesh, India. 
-                We were among the first groups to get certified under the Participatory Guarantee System (PGS) in our state. 
-                Currently we are fifteen farmers, one fully organic, the rest in the process of converting the farms to 
-                organic farming.
-            </p>
+        <div class="textsec" id="intro_text">
+            <h1>Who We Are</h1>
+            <hr>
+            We are a group of organic farmers in beautiful Pangna valley in Himachal Pradesh, India. 
+            Our group was among the first to get certified under the Participatory Guarantee System (PGS) in our state.  
+            Currently we are fifteen farmers, one fully organic, the rest in the process of converting the farms to 
+            organic farming.
         </div>
-        <script>
-            var event = document.createEvent("Event");
-            event.initEvent("resize", true, true);
-            window.dispatchEvent(event); 
-        </script>
+        
+        <div id="hps_product">
+            <div class="textsec">
+                <h1>What We Do</h1>
+            </div>
+        </div>
 
+        <div id="hps_pics">
+            <div class="textsec">
+                <h1>Picture Space</h1>
+            </div>
+        </div>
+
+        <div id="hps_where">
+            <div id="map"></div>
+        </div>
+
+        <script src="js/init_map.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlkGp3-wBC7-SZDdUXNm4ynqNRKifHAIY&callback=InitMap"
+        async defer></script>
+
+        <!-- Scrollspace -->
+        <div style="width: 100%; height: 120vh;"></div>
+
+        <script src="js/hpanim.js" typ="text/javascript"></script>
     </body>
 </html>

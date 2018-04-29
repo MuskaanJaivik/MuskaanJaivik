@@ -8,10 +8,6 @@ card_frame.setAttribute("class", "pr_frame");
 // add frame to body
 document.getElementsByTagName("body")[0].appendChild(card_frame);
 
-
-// swap test
-var tmp = document.getElementsByTagName("body")[0].getElementsByClassName("card_frame");
-
 function doesFileExist(file_url) {
     try {
         var http = new XMLHttpRequest();
@@ -137,21 +133,26 @@ function addCard(name, image, quantity, harvest, available) {
     card_frame.appendChild(card_container);
 }
 
-loadJSON(function(response) {
-    // Parse JSON string into object
-    produce_data = JSON.parse(response);
-    var produce = produce_data.produce;
 
-    for (var i = 0; i != produce.length; i++) {
-        addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available);
-    }
+function LoadCompleteSet() {
 
-    var ww = window.innerWidth;
-    var p = document.getElementsByClassName("card_container")[0];
-    var style = p.currentStyle || window.getComputedStyle(p);
-    var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
-    var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 9;
-    card_frame.style.marginLeft = margin+ "px";
-    card_frame.style.marginRight = margin + "px";
+    loadJSON(function(response) {
+        // Parse JSON string into object
+        produce_data = JSON.parse(response);
+        var produce = produce_data.produce;
 
-});
+        for (var i = 0; i != produce.length; i++) {
+            addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available);
+        }
+
+        var ww = window.innerWidth;
+        var p = document.getElementsByClassName("card_container")[0];
+        var style = p.currentStyle || window.getComputedStyle(p);
+        var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
+        var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 9;
+        card_frame.style.marginLeft = margin+ "px";
+        card_frame.style.marginRight = margin + "px";
+
+    });
+
+}

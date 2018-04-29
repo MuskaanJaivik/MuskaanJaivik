@@ -18,6 +18,14 @@ logo_text.setAttribute("id", "logo_text");
 logo_text.appendChild(document.createTextNode("MUSKAAN JAIVIK SHG"));
 logo.appendChild(logo_text);
 
+// Add Logo Link
+logo.addEventListener("click", function(){
+    window.open("/", "_self");
+});
+logo_text.addEventListener("click", function(){
+    window.open("/", "_self");
+});
+
 // Top Nav Entries
 //
 var contact = createTab("Contact", "/contact/")
@@ -108,7 +116,7 @@ function createHamburgerIcon() {
     var span_inner = document.createElement("span");
     span_inner.setAttribute("class", "hamburger-inner");
     span.appendChild(span_inner);
-
+    
     icon.addEventListener("click", function(){
         if (!icon.getAttribute("class").includes("is-active")) {
             icon.setAttribute("class", icon.getAttribute("class") + " is-active");

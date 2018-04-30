@@ -2,22 +2,20 @@
 var is_touch = HasTouchScreen();
 
 var scroll_old = 0;
+var scroll_icon = document.getElementsByClassName("material-icons")[0];
 window.addEventListener("scroll", function(){
+    if (window.scrollY > 0.2*window.innerHeight && scroll_icon.style.display != "none")
+        scroll_icon.style.display = "none";
+    else {
+        if (scroll_icon.style.display == "none")
+            scroll_icon.style.display = "initial";
+        scroll_icon.style.opacity = 1 - window.scrollY / (window.innerHeight * 0.2);
+    }
     if (is_touch)
         return;
     // Scroll whole screen when scrolling down from top
     if (scroll_old < window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight) {
-        var tmp = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-        var tmptouch = document.body.style.touchAction;
-        document.body.style.touchAction = "none";
-        window.scrollTo({
-            /*top: document.getElementById("intro_text").getBoundingClientRect().top - document.getElementById("topnav_container").getBoundingClientRect().bottom,*/
-            top: document.getElementsByClassName("banner")[0].offsetHeight,
-            behavior: "smooth"
-        });
-        document.body.style.overflow = tmp;
-        document.body.style.touchAction = tmptouch;
+        ScrollDown();
     }
 
     // Scroll whole screen when scrolling up in banner
@@ -32,7 +30,20 @@ window.addEventListener("scroll", function(){
         document.body.style.overflow = tmp;
     }
     scroll_old = window.scrollY;
-})
+});
+
+document.getElementsByClassName("material-icons")[0].addEventListener("click", function(){ScrollDown();});
+
+function ScrollDown() {
+    var tmp = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.scrollTo({
+        /*top: document.getElementById("intro_text").getBoundingClientRect().top - document.getElementById("topnav_container").getBoundingClientRect().bottom,*/
+        top: document.getElementsByClassName("banner")[0].offsetHeight,
+        behavior: "smooth"
+    });
+    document.body.style.overflow = tmp;
+}
 
 window.addEventListener("resize", function() {
     FitBanner();

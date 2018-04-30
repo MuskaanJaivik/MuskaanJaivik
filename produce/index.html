@@ -7,7 +7,7 @@
 
         <link rel="stylesheet" href="../css/produce.css" rel="stylesheet">
     </head>
-    <body id="produce-page" onresize="Resize()">
+    <body id="produce-page">
         <script src="../js/topnav.js"></script>
 
         <div class="textsec">
@@ -19,20 +19,6 @@
 
         <script src="../js/produce.js"></script>
         <script>LoadCompleteSet();</script>
-
-        <script>
-            function Resize() {
-                var puffer = 20;
-                var ww = window.innerWidth - 20;
-                var p = document.getElementsByClassName("card_container")[0];
-                var style = p.currentStyle || window.getComputedStyle(p);
-                var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
-                var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 9+ puffer/2;// - 12;
-
-                card_frame.style.marginLeft = margin+ "px";
-                card_frame.style.marginRight = margin + "px";
-            }
-        </script>
 
     </body>
 </html>

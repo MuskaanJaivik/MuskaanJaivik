@@ -145,14 +145,24 @@ function LoadCompleteSet() {
             addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available);
         }
 
-        var ww = window.innerWidth;
-        var p = document.getElementsByClassName("card_container")[0];
-        var style = p.currentStyle || window.getComputedStyle(p);
-        var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
-        var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 9;
-        card_frame.style.marginLeft = margin+ "px";
-        card_frame.style.marginRight = margin + "px";
+        ResizeCards();
 
     });
 
 }
+
+function ResizeCards() {
+
+    var card = document.getElementsByClassName("card_container")[0];
+    var style = card.currentStyle || window.getComputedStyle(card);
+
+    var wpc = card.offsetWidth + parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
+    var min_margin = 0.22 * window.innerWidth;
+    if (Math.floor((window.innerWidth - min_margin) / wpc) < 2) {
+        card_frame.style.width = 2 * wpc;
+        return;
+    }
+    card_frame.style.width = Math.floor((window.innerWidth - min_margin) / wpc) * wpc + "px";
+}
+
+window.addEventListener("resize", ResizeCards);

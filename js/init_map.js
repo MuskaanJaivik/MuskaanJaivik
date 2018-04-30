@@ -4,25 +4,7 @@ function InitMap() {
     zoom: 16,
     mapTypeId: "hybrid",
     disableDefaultUI: true,
-    /*styles: [
-      {
-          "featureType": "all",
-          "stylers": [ { "visibility": "off" } ]
-      },
-      {
-        "featureType": "administrative.country",
-        "stylers": [ { "visibility": "on" } ]
-      },
-      {
-        "featureType": "administrative.province",
-        "stylers": [ { "visibility": "on" } ]
-      },
-      {
-        "featureType": "administrative.province",
-        "elementType": "geometry.stroke",
-        "stylers": [{ "weight": "3" } ]
-      }
-    ]*/
+    //fullscreenControl: true,
   });
 
   SetStyle(map);
@@ -125,7 +107,7 @@ function CenterControl(controlDiv, map) {
       controlUI.childNodes[0].innerHTML = "Zoom to Himachal";
     }
     else if (cur == "Himachal") {
-      controlUI.childNodes[0].innerHTML = "Zoom to MJSHG";
+      controlUI.childNodes[0].innerHTML = "Zoom to Pangna";
     }
     else {
       controlUI.childNodes[0].innerHTML = "Zoom to India";
@@ -145,7 +127,7 @@ function ChangeZoom(map, pan_adjust) {
   }
   else {
     SmoothZoom(map, 16, pan_adjust);
-    return "MJSHG";
+    return "Pangna";
   }
 }
 

@@ -15,6 +15,13 @@ var isChrome = !!window.chrome && !!window.chrome.webstore;
 // Blink engine detection
 var isBlink = (isChrome || isOpera) && !!window.CSS;
 
+
+if (isIE)
+    alert("This website currently doesn't work in Internet Explorer. Please use Firefox or Google Chrome to view the website as intended.");
+else if (isEdge)
+    alert("This website currently has a lot of display problems in Microsoft Edge. Please use Firefox or Google Chrome to view the website as intended.");
+
+
 var scroll_old = 0;
 var scroll_icon = document.getElementsByClassName("material-icons")[0];
 var is_scrolling = false;
@@ -73,6 +80,7 @@ window.addEventListener("resize", function() {
 window.addEventListener("scroll", ScrollHandler);
 FitBanner();
 document.getElementsByClassName("material-icons")[0].addEventListener("click", function(){ScrollDown();});
+//document.getElementById("hps_where").style.height = window.innerHeight - document.getElementById("topnav_container").offsetHeight + "px";
 
 //document.getElementsByTagName("body")[0].style.overflow = "hidden";
 
@@ -91,6 +99,6 @@ function calcNavHeight() {
 
 function HasTouchScreen() {
     return (('ontouchstart' in window)
-         || (navigator.MaxTouchPoints > 0)
-         || (navigator.msMaxTouchPoints > 0));
-   }
+      || (navigator.MaxTouchPoints > 0)
+      || (navigator.msMaxTouchPoints > 0));
+}

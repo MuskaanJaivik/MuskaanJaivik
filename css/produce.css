@@ -1,8 +1,10 @@
 .pr_frame {
     padding: 0px;
     border-width: 0px;
-    display: inline-block;
+    display: block;
     margin-top: 0px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* Big Screen */
@@ -39,7 +41,8 @@
 
 /* Aspect Ratio 10:13 */
 .card_container {
-    perspective: 1000px;
+    -webkit-perspective: 1000px;
+            perspective: 1000px;
      /* Card Spacing */
      margin: 7px;
      display: inline-block;
@@ -48,21 +51,30 @@
 .card {
     width: 100%;
     height: 100%;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    -webkit-transition: 0.3s;
+    -o-transition: 0.3s;
     transition: 0.3s;
     background-color: snow;
     text-align: center;
     font-family: 'Open Sans', sans-serif;
     padding: 0px;
 
+	-webkit-transition: 0.6s;
+
+	-o-transition: 0.6s;
+
 	transition: 0.6s;
-	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	        transform-style: preserve-3d;
 
 	position: relative;
 }
 
 .card_container:hover .card, .card_container.hover .card, .card_container.flip .card {
-    transform: rotateY(-180deg);
+    -webkit-transform: rotateY(-180deg);
+            transform: rotateY(-180deg);
 }
 
 .front, .back {
@@ -71,7 +83,8 @@
 }
 
 .front, .back {
-	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+	        backface-visibility: hidden;
 
 	position: absolute;
 	top: 0;
@@ -81,11 +94,13 @@
 .front {
 	z-index: 2;
 	/* for firefox 31 */
-    transform: rotateY(0deg);
+    -webkit-transform: rotateY(0deg);
+            transform: rotateY(0deg);
 }
 
 .back {
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
 }
 
 .front img {
@@ -105,7 +120,9 @@
 
     background: rgba(150, 150, 150, 0.78);
     z-index: 4;
-    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
 }
 
 /* Card Front Title */
@@ -116,12 +133,16 @@
     /*font-size: 25px;*/
     position: relative;
     top: 50%;
-    transform: translateY(-50%);
+    -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+            transform: translateY(-50%);
 }
 
 .back p {
     color: #202121;
     position: relative;
     top: 50%;
-    transform: translateY(-51%); 
+    -webkit-transform: translateY(-51%);
+        -ms-transform: translateY(-51%);
+            transform: translateY(-51%); 
 }

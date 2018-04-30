@@ -34,7 +34,7 @@ function ScrollHandler() {
             scroll_icon.style.display = "initial";
         scroll_icon.style.opacity = 1 - window.scrollY / (window.innerHeight * 0.2);
     }
-    if (is_touch || isEdge)
+    if (is_touch || isEdge || isSafari)
         return;
     // Scroll whole screen when scrolling down from top
     if (scroll_old < window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight && !is_scrolling) {

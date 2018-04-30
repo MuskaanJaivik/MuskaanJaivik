@@ -23,6 +23,7 @@ AddExternCSS("https://fonts.googleapis.com/css?family=Open+Sans");
 AddExternCSS("https://fonts.googleapis.com/css?family=Roboto");
 AddExternCSS("https://fonts.googleapis.com/css?family=Slabo+27px");
 AddExternCSS("https://fonts.googleapis.com/css?family=Laila");
+AddExternCSS("https://fonts.googleapis.com/icon?family=Material+Icons");
 
 // CSS
 AddCSS("style");

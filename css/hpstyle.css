@@ -87,3 +87,7 @@
     background-attachment: initial;
   }
 }
+
+
+
+.noscroll { position: fixed; overflow-y:scroll; width: 100%; }

@@ -3,7 +3,9 @@ var is_touch = HasTouchScreen();
 
 var scroll_old = 0;
 var scroll_icon = document.getElementsByClassName("material-icons")[0];
-window.addEventListener("scroll", function(){
+var is_scrolling = false;
+
+function ScrollHandler() {
     if (window.scrollY > 0.2*window.innerHeight && scroll_icon.style.display != "none")
         scroll_icon.style.display = "none";
     else {
@@ -14,42 +16,51 @@ window.addEventListener("scroll", function(){
     if (is_touch)
         return;
     // Scroll whole screen when scrolling down from top
-    if (scroll_old < window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight) {
-        ScrollDown();
+    if (scroll_old < window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight && !is_scrolling) {
+        is_scrolling = true;
+        setTimeout(function(){is_scrolling = false}, 500);
+        setTimeout(function(){ScrollDown()}, 1);
     }
 
     // Scroll whole screen when scrolling up in banner
-    if (scroll_old > window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight) {
-        var tmp = document.body.style.overflow;
-        document.body.style.overflow = "hidden";
-        window.scrollTo({
-            /*top: document.getElementById("intro_text").getBoundingClientRect().top - document.getElementById("topnav_container").getBoundingClientRect().bottom,*/
-            top: 0,
-            behavior: "smooth"
-        });
-        document.body.style.overflow = tmp;
+    if (scroll_old > window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight && !is_scrolling) {
+        is_scrolling = true;
+        setTimeout(function(){is_scrolling = false}, 500);
+        setTimeout(function(){ScrollUp()}, 1);
     }
     scroll_old = window.scrollY;
-});
-
-document.getElementsByClassName("material-icons")[0].addEventListener("click", function(){ScrollDown();});
+}
 
 function ScrollDown() {
-    var tmp = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    var tmp = document.getElementsByTagName("body")[0].style.overflow;
+    /*document.getElementsByTagName("body")[0].style.overflow = "hidden";
+    setTimeout(function() { document.getElementsByTagName("body")[0].style.overflow = "initial"; }, 300);*/
+    window.removeEventListener("scroll", ScrollHandler);
     window.scrollTo({
-        /*top: document.getElementById("intro_text").getBoundingClientRect().top - document.getElementById("topnav_container").getBoundingClientRect().bottom,*/
         top: document.getElementsByClassName("banner")[0].offsetHeight,
         behavior: "smooth"
     });
-    document.body.style.overflow = tmp;
+    window.addEventListener("scroll", ScrollHandler);
+}
+
+function ScrollUp() {
+    window.removeEventListener("scroll", ScrollHandler);
+    window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+    });
+    window.addEventListener("scroll", ScrollHandler);
 }
 
 window.addEventListener("resize", function() {
     FitBanner();
 })
 
+window.addEventListener("scroll", ScrollHandler);
 FitBanner();
+document.getElementsByClassName("material-icons")[0].addEventListener("click", function(){ScrollDown();});
+
+//document.getElementsByTagName("body")[0].style.overflow = "hidden";
 
 function FitBanner(){
     document.getElementsByClassName("banner")[0].style.height = window.innerHeight - calcNavHeight() + "px";

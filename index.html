@@ -10,12 +10,6 @@
 
     </head>
     <body id="home-page">
-        <!--
-        <center style="font-size: 15px; background-color: whitesmoke; color: #555555; margin: 10px;">
-            This website is currently under construction. Everything you see here is a prototype.
-            If you have any feedback or questions please mail at 
-            <a href="mailto:mathis@muskaanjaivik.com?Subject=Feedback%20MJSHG%20Website" target="_top">mathis@muskaanjaivik.com</a>.
-        </center>-->
 
         <script src="js/topnav.js"></script>
 
@@ -25,8 +19,7 @@
         </div>
 
         <div class="textsec" id="intro_text">
-            <h1>Who We Are</h1>
-            <hr>
+            <h1>Who We Are<hr></h1>
             We are a group of organic farmers in beautiful Pangna valley in Himachal Pradesh, India. 
             Our group was among the first to get certified under the Participatory Guarantee System (PGS) in our state.  
             Currently we are fifteen farmers, one fully organic, the rest in the process of converting the farms to 
@@ -34,13 +27,22 @@
         </div>
         
         <div id="hps_product">
-            <div class="textsec">
-                <h1>What We Do</h1>
-            </div>
+            <div class="textsec"><h1>Our Crops<hr></h1><input value="view all" type="button" onclick="location.href='produce';"/></div>
             <div id="cfback"><div id="hps_cardframe"></div></div>
+            <div class="textsec">
+                Our group grows a wide variety of crops such as Rice, Wheat, Maize, Peas and many more.
+            </div>
         </div>
         <script src="js/produce.js"></script>
         <script async defer>LoadLine(["Rice", "Maize", "Wheat", "Potato", "Tomato", "Peas", "Apple", "Anardana", "Pumpkin"], document.getElementById("hps_cardframe"))</script>
+
+        <div class="textsec" id="pgs_quote">
+            <q>
+                Participatory Guarantee Systems are locally focused quality assurance systems.
+                They certify producers based on active participation of stakeholders and are 
+                built on a foundation of trust, social networks and knowledge exchange.
+            </q><small class="source">&#x02500 <abbr title="International Federation of Organic Agriculture Movements">IFOAM</abbr></small>
+        </div>
 
         <div id="hps_pics">
             <div class="textsec">
@@ -53,12 +55,6 @@
         </div>
         <script src="js/init_map.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlkGp3-wBC7-SZDdUXNm4ynqNRKifHAIY&region=IN&callback=InitMap" async defer></script>
-
-        <!-- AIzaSyBlkGp3-wBC7-SZDdUXNm4ynqNRKifHAIY -->
-
-        <!--<video id="vid_plow" autoplay loop>
-            <source src="video/plow1.mp4" type="video/mp4">
-        </video> -->
 
         <div id="player"></div>
         <script src="js/init_video.js"></script>

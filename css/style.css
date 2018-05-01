@@ -35,13 +35,12 @@ body {
   font-size: 1.8em;
 }
 
-.textsec hr {
-  /*margin-top: 0px;*/
-  margin-top: -20px;
+.textsec h1 hr {
+  margin-top: 7px;
   margin-bottom: 25px;
   height: 2px;
   background-color: #555555;
-  width: 12%;
+  width: 2.8em;
   margin-left: 0px;
 }
 

@@ -145,6 +145,7 @@ function LoadCompleteSet() {
             addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available);
         }
 
+<<<<<<< HEAD
         ResizeCards();
 
     });
@@ -166,3 +167,16 @@ function ResizeCards() {
 }
 
 window.addEventListener("resize", ResizeCards);
+=======
+        var ww = window.innerWidth;
+        var p = document.getElementsByClassName("card_container")[0];
+        var style = p.currentStyle || window.getComputedStyle(p);
+        var wpc = document.getElementsByClassName("card_container")[0].offsetWidth + 2 * parseInt(style.marginLeft, 10);
+        var margin = (ww - Math.floor(ww/wpc) * wpc) / 2 - 9;
+        card_frame.style.marginLeft = margin+ "px";
+        card_frame.style.marginRight = margin + "px";
+
+    });
+
+}
+>>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3

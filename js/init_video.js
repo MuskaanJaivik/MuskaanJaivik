@@ -33,7 +33,7 @@ function onYouTubeIframeAPIReady() {
     cover.click(function(event){event.stopPropagation();});
 }
 
-document.getElementsByTagName("body")[0].addEventListener("resize", function(){
+window.addEventListener("resize", function(){
     Conceal(document.getElementById("video_cover"));
 });
 

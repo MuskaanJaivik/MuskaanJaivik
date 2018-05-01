@@ -1,143 +1,114 @@
+var body = document.getElementsByTagName("body")[0];
+var navbar = document.createElement("ul");
+navbar.setAttribute("id", "navbar");
+body.appendChild(navbar);
 
-var container = createNavContainer();
-var navbar = createBar();
-
-// Logo
+// Add Entries
 //
-var logo = createLogoContainer();
-// Drawing
-var logo_draw = document.createElement("canvas");
-logo_draw.setAttribute("id", "logo_draw");
-logo_draw.setAttribute("width", "100px");
-logo_draw.setAttribute("height", "100");
-drawLogo(logo_draw);
-logo.appendChild(logo_draw);
-// Text
-var logo_text = document.createElement("div");
-logo_text.setAttribute("id", "logo_text");
-logo_text.appendChild(document.createTextNode("MUSKAAN JAIVIK SHG"));
-logo.appendChild(logo_text);
+var home = document.createElement("li");
+var contact = document.createElement("li");
+var photos = document.createElement("li");
+var blog = document.createElement("li");
+var projects = document.createElement("li");
+var produce = document.createElement("li");
+var title = document.createElement("li");
 
-// Add Logo Link
-logo.addEventListener("click", function(){
-    window.open("/", "_self");
-});
-logo_text.addEventListener("click", function(){
-    window.open("/", "_self");
-});
+navbar.appendChild(home);
+navbar.appendChild(contact);
+navbar.appendChild(photos);
+navbar.appendChild(blog);
+navbar.appendChild(projects);
+navbar.appendChild(produce);
+navbar.appendChild(title);
 
-// Top Nav Entries
+// Customize Entries
 //
-var contact = createTab("Contact", "/contact/")
-var photos = createTab("Photos", "/photos/")
-var blog = createTab("Blog", "/blog/")
-var projects = createTab("Project", "/projects/")
-var produce = createTab("Produce", "/produce/")
 
-// Set Active
-switch (document.getElementsByTagName("body")[0].getAttribute("id")) {
-    case ("home-page"):
-        logo.setAttribute("id", "active");
-    case ("contact-page"):
-        contact.setAttribute("id", "active");
+var path_suffix = "";
+if (body.id != "home-page")
+    path_suffix = "../";
+
+// Home
+home.setAttribute("style", "float:left; padding-left:1%; padding-right:1%; background-color: rgb(168,207,56);");
+home.setAttribute("id", "home_element");
+var a_home = document.createElement("a");
+a_home.setAttribute("href", path_suffix + "index.html");
+var logo_canvas = document.createElement("canvas");
+logo_canvas.setAttribute("id", "logo");
+logo_canvas.setAttribute("width", "85");
+logo_canvas.setAttribute("height", "85");
+a_home.appendChild(logo_canvas);
+home.appendChild(a_home);
+
+// Title
+title.setAttribute("id", "title");
+var a_title = document.createElement("a");
+a_title.setAttribute("href", path_suffix + "index.html");
+a_title.appendChild(document.createTextNode("Muskaan Jaivik SHG"));
+title.appendChild(a_title);
+title.setAttribute("style", "transform: translateX(50vw) translateX(-50%) translateX(" + (- (window.outerWidth - window.innerWidth) / 2) + "px);");
+
+// Contact
+var a_contact = document.createElement("a");
+a_contact.setAttribute("href", path_suffix + "contact/index.html");
+a_contact.appendChild(document.createTextNode("Contact"));
+contact.appendChild(a_contact);
+
+// Photos
+var a_photos = document.createElement("a");
+a_photos.setAttribute("href", path_suffix + "photos/index.html");
+a_photos.appendChild(document.createTextNode("Photos"));
+photos.appendChild(a_photos);
+
+// Blog
+var a_blog = document.createElement("a");
+a_blog.setAttribute("href", path_suffix + "blog/index.html");
+a_blog.appendChild(document.createTextNode("Blog"));
+blog.appendChild(a_blog);
+
+// Projects
+var a_projects = document.createElement("a");
+a_projects.setAttribute("href", path_suffix + "projects/index.html");
+a_projects.appendChild(document.createTextNode("Projects"));
+projects.appendChild(a_projects);
+
+// Produce
+var a_produce = document.createElement("a");
+a_produce.setAttribute("href", path_suffix + "produce/index.html");
+a_produce.appendChild(document.createTextNode("Produce"));
+produce.appendChild(a_produce);
+
+// Highlight active page
+//
+switch(body.id) {
+    case "produce-page":
+        produce.setAttribute("class", "entry_active");
         break;
-    case ("home-page"):
-        photos.setAttribute("id", "active");
+    case "projects-page":
+        projects.setAttribute("class", "entry_active");
         break;
-    case ("home-page"):
-        blog.setAttribute("id", "active");
+    case "blog-page":
+        blog.setAttribute("class", "entry_active");
         break;
-    case ("home-page"):
-        projects.setAttribute("id", "active");
+    case "contact-page":
+        contact.setAttribute("class", "entry_active");
         break;
-    case ("home-page"):
-        produce.setAttribute("id", "active");
+    case "photos-page":
+        photos.setAttribute("class", "entry_active");
         break;
 }
 
-// Hamburger Icon
-createHamburgerIcon();
+// Draw Logo
+drawLogo();
 
-function createNavContainer() {
-    var container = document.createElement("div");
-    container.setAttribute("id", "topnav_container");
-    document.getElementsByTagName("body")[0].appendChild(container);
-    return container;
-}
-
-function createLogoContainer() {
-    var logo_container = document.createElement("div");
-    logo_container.setAttribute("class", "logo_container");
-    container.appendChild(logo_container);
-    container.setAttribute("class", "closed");
-    return logo_container;
-}
-
-function createBar() {
-    var bar = document.createElement("div");
-    bar.setAttribute("id", "topnav");
-    container.appendChild(bar);
-    return bar;
-}
-
-function createTab(name, path) {
-    var tab = document.createElement("li");
-    tab.setAttribute("class", "tab");
-    tab.setAttribute("id", name.toLowerCase());
-    var link = document.createElement("a");
-    link.setAttribute("href", path);
-    link.appendChild(document.createTextNode(name));
-    tab.appendChild(link);
-    navbar.appendChild(tab);
-    return tab;
-}
-
-function createLogo() {
-    var logo = document.createElement("li");
-    logo.setAttribute("class", "logo");
-    navbar.appendChild(logo);
-    var canvas = document.createElement("canvas");
-    //canvas.style.width = "200px";
-    //canvas.style.height = "100px";
-    canvas.setAttribute("width", "100");
-    canvas.setAttribute("height", "100");
-    logo.appendChild(canvas);
-    drawLogo(canvas);
-}
-
-function createHamburgerIcon() {
-    var icon = document.createElement("button");
-    icon.setAttribute("class", "hamburger hamburger--spin");
-    icon.setAttribute("type", "button");
-    container.appendChild(icon);
-    var span = document.createElement("span");
-    span.setAttribute("class", "hamburger-box");
-    icon.appendChild(span);
-    var span_inner = document.createElement("span");
-    span_inner.setAttribute("class", "hamburger-inner");
-    span.appendChild(span_inner);
-    
-    icon.addEventListener("click", function(){
-        if (!icon.getAttribute("class").includes("is-active")) {
-            icon.setAttribute("class", icon.getAttribute("class") + " is-active");
-            container.setAttribute("class", "extended");
-        }
-        else {
-            icon.setAttribute("class", icon.getAttribute("class").replace(" is-active", ""));
-            container.setAttribute("class", "closed");
-        }
-    });
-}
-
-function drawLogo(canvas) {
-    var h = canvas.height;
+function drawLogo() {
+    var canvas = document.getElementById("logo");
     var w = canvas.width;
-    //var scale = h/643;
-    var scale = w/643;
+    var h = canvas.height;
+    var scale = h/643;
     
     //var off_y = (h-463)/2;
-    //var off_y = (h-scale*463/1.5)/2;
-    var off_y = (h-scale)/2;
+    var off_y = (h-scale*463/1.5)/2;
     var top_w = 112;
     var top_h = 54;
     var off_interseg_y = top_h+4 + off_y;

@@ -7,12 +7,8 @@
     width: 100%;
     /*background-color: rgb(168,207,56);*/
     background-color: yellowgreen;
-<<<<<<< HEAD
     -webkit-box-shadow: 0px 2px 4px gray;
             box-shadow: 0px 2px 4px gray;
-=======
-    box-shadow: 0px 2px 4px gray;
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
     font-family: "Roboto", sans-serif;
     color: snow;
     height: 100px;
@@ -68,22 +64,15 @@
     #topnav .tab a {
         vertical-align: middle;
         text-transform: uppercase;
-<<<<<<< HEAD
         -webkit-transition: 0.2s;
         -o-transition: 0.2s;
-=======
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
         transition: 0.2s;
     }
 
     #topnav .tab a:hover {
-<<<<<<< HEAD
         -ms-transform: translateY(-4%);
             transform: translateY(-4%);
         -webkit-transform: -webkit-translateY(-4%);
-=======
-        transform: translateY(-4%);
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
         text-shadow: 0px 2px 4px darkgrey;
     }
 }
@@ -105,13 +94,9 @@
         float: right;
         position: relative;
         top: 50%;
-<<<<<<< HEAD
         -webkit-transform: translateY(-50%);
             -ms-transform: translateY(-50%);
                 transform: translateY(-50%);
-=======
-        transform: translateY(-50%);
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
         width: 180px;
         margin-top: auto;
         margin-bottom: auto;
@@ -140,19 +125,14 @@
 
     #topnav {
         left: 50%;
-<<<<<<< HEAD
         -ms-transform: translateX(-50%);
             transform: translateX(-50%);
         -webkit-transform: -webkit-translateX(-50%);
-=======
-        transform: translateX(-50%);
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
         width: auto;
         margin-left: auto;
         margin-right: auto;
         text-align: center;
         
-<<<<<<< HEAD
         display: -webkit-box;
         
         display: -ms-flexbox;
@@ -162,10 +142,6 @@
         -webkit-box-direction: reverse;
             -ms-flex-direction: row-reverse;
                 flex-direction: row-reverse;
-=======
-        display: flex;
-        flex-direction: row-reverse;
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
     }
 
     #topnav .tab {
@@ -189,13 +165,9 @@
         width: auto;
         left: 50%;
         top: 15%;
-<<<<<<< HEAD
         -ms-transform: translateX(-50%);
             transform: translateX(-50%);
         -webkit-transform: -webkit-translateX(-50%);
-=======
-        transform: translateX(-50%);
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
     }
 
     #logo_draw {
@@ -225,13 +197,9 @@
         display: block;
         margin: auto;
         left: 50%;
-<<<<<<< HEAD
         -ms-transform: translateX(-50%) translateX(-30px);
             transform: translateX(-50%) translateX(-30px);
         -webkit-transform: -webkit-translateX(-50%) -webkit-translateX(-30px);
-=======
-        transform: translateX(-50%) translateX(-30px);
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
     }
 
     .logo_container #logo_draw {
@@ -246,13 +214,9 @@
         position: relative;
         display: inline-block;
         top: 50%;
-<<<<<<< HEAD
         -ms-transform: translateY(-50%);
             transform: translateY(-50%);
         -webkit-transform: -webkit-translateY(-50%);
-=======
-        transform: translateY(-50%);
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
         max-width: 300px;
         margin-top: auto;
         margin-bottom: auto;
@@ -273,7 +237,6 @@
         border-top-width: 1px;
         border-top-color: darkgray;
 
-<<<<<<< HEAD
         display: -webkit-box;
 
         display: -ms-flexbox;
@@ -283,10 +246,6 @@
         -webkit-box-direction: reverse;
             -ms-flex-direction: column-reverse;
                 flex-direction: column-reverse;
-=======
-        display: flex;
-        flex-direction: column-reverse;
->>>>>>> 92d2b2026c6d493e91b24ea76a36f8031c1b7bc3
     }
 
     .extended #topnav .tab {

@@ -113,6 +113,10 @@
   }
 }
 
-#vid_plow {
-  width: 100%;
+#id {
+  width: 90vw;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding: 0px;
+  overflow: hidden;
 }

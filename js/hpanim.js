@@ -17,9 +17,7 @@ var isBlink = (isChrome || isOpera) && !!window.CSS;
 
 
 if (isIE)
-    alert("This website currently doesn't work in Internet Explorer. Please use Firefox or Google Chrome to view the website as intended.");
-else if (isEdge)
-    alert("This website currently has a lot of display problems in Microsoft Edge. Please use Firefox or Google Chrome to view the website as intended.");
+    alert("This website currently has a lot of bugs in Internet Explorer. Please use Firefox or Google Chrome to view the website as intended.");
 
 
 var scroll_old = 0;

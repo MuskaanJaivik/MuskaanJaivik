@@ -57,4 +57,11 @@ body {
   .textsec h1 {
     text-align: center;
   }
+
+  .textsec hr {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 25vw;
+  }
 }

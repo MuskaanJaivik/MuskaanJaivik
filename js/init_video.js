@@ -10,8 +10,8 @@ var player;
 function onYouTubeIframeAPIReady() {
     var ww = window.innerWidth;
     player = new YT.Player("player", {
-        width: ww,
-        height: 0.5625*ww,
+        width: document.getElementsByTagName("body")[0].offsetWidth,
+        height: document.getElementsByTagName("body")[0].offsetWidth * 0.5625,
         videoId: "YWqyQSuxt3s",
 
         playerVars: { "autoplay": 1, "rel": 0, "disablekb": 1, "controls": 0, "showinfo": 0, "modestbranding": 1 },
@@ -25,17 +25,20 @@ function onYouTubeIframeAPIReady() {
     var cover = document.createElement("div");
     document.getElementsByTagName("body")[0].appendChild(cover);
     cover.setAttribute("id", "video_cover");
-    //cover.setAttribute("style", "position: absolute; left: " + GetAbsoluteOffset(document.getElementById("player")).left + "; top: " + GetAbsoluteOffset(document.getElementById("player")).top + "px; background-color: rgba(255, 0, 0, 0.5); width: " + document.getElementById("player").offsetWidth + "px; height: " + document.getElementById("player").offsetHeight + "px; z-index: 30;");
     cover.style.position = "absolute";
     cover.style.backgroundColor = "rgba(0, 0, 0, 0)";
     cover.style.zIndex = document.getElementById("topnav_container").style.zIndex - 1;
     Conceal(cover);
     cover.click(function(event){event.stopPropagation();});
+    window.addEventListener("resize", VidResize);
 }
 
-window.addEventListener("resize", function(){
+function VidResize() {
+    var vid = document.getElementById("player");
+    vid.style.width = document.getElementsByTagName("body")[0].offsetWidth + "px";
+    vid.style.height = document.getElementsByTagName("body")[0].offsetWidth * 0.5625 + "px";
     Conceal(document.getElementById("video_cover"));
-});
+}
 
 function GetAbsoluteOffset(element) {
     var top = 0, left = 0;
@@ -52,7 +55,6 @@ function GetAbsoluteOffset(element) {
 };
 
 function Conceal(cover) {
-    //var cover = document.getElementById("video_conver");
     cover.style.left = GetAbsoluteOffset(document.getElementById("player")).left + "px";
     cover.style.top = GetAbsoluteOffset(document.getElementById("player")).top + "px";
     cover.style.width = document.getElementById("player").offsetWidth + "px";

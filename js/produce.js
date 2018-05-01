@@ -2,12 +2,6 @@
     Add Produce Cards
 */
 
-// card_frame
-var card_frame = document.createElement("div");
-card_frame.setAttribute("class", "pr_frame");
-// add frame to body
-document.getElementsByTagName("body")[0].appendChild(card_frame);
-
 function doesFileExist(file_url) {
     try {
         var http = new XMLHttpRequest();
@@ -20,10 +14,10 @@ function doesFileExist(file_url) {
     }
 }
 
-function loadJSON(callback) {
+function loadJSON(callback, file) {
     var xobj = new XMLHttpRequest();
     xobj.overrideMimeType("application/json");
-    xobj.open('GET', '../produce/produce.json', true);
+    xobj.open('GET', file, true);
     xobj.onreadystatechange = function () {
           if (xobj.readyState == 4 && xobj.status == "200") {
             callback(xobj.responseText);
@@ -41,7 +35,7 @@ function getRandomColor() {
     return color;
 }
 
-function addCard(name, image, quantity, harvest, available) {
+function addCard(name, image, quantity, harvest, available, frame) {
     // card container
     var card_container = document.createElement("div");
     card_container.setAttribute("class", "card_container");
@@ -130,39 +124,102 @@ function addCard(name, image, quantity, harvest, available) {
     // add card to cardcontainer
     card_container.appendChild(card);
 
-    card_frame.appendChild(card_container);
+    frame.appendChild(card_container);
 }
 
+// Use on Homepage
+//
+function LoadLine(products, frame) {
+    LoadCards(products, frame);
+    window.addEventListener("resize", function(){ setTimeout(TruncLine, 10)});
+    setTimeout(TruncLine, 10);
+}
 
+function TruncLine() {
+    var resize_frame = document.getElementsByClassName("pr_frame")[0];
+    if (resize_frame.getElementsByClassName("card_container").length == 0) {
+        alert("no produce cards found");
+        return;
+    }
+    var card = resize_frame.getElementsByClassName("card_container")[0];
+    var style = card.currentStyle || window.getComputedStyle(card);
+    var hpc = card.offsetHeight + parseInt(style.marginTop, 10) + parseInt(style.marginBottom, 10);
+    document.getElementsByClassName("pr_frame")[0].style.height = hpc + "px";
+}
+
+function LoadCards(products, frame) {
+    if (frame.getAttribute("class") != "pr_frame")
+        frame.setAttribute("class", "pr_frame");
+    loadJSON(function(response) {
+        produce_list = JSON.parse(response).produce;
+        
+        for (var i = 0; i < products.length; i++){
+            var pr = FindProduct(products[i], produce_list);
+            if (pr == -1) continue;
+            else addCard(produce_list[pr].name, "../img/produce/" + produce_list[i].name.toLowerCase() + ".jpg", produce_list[pr].quantity, produce_list[pr].harvest, produce_list[pr].available, frame);
+        }
+    }, "produce/produce.json");
+    
+    setTimeout(function(){ResizeCards()}, 5);
+    window.addEventListener("resize", ResizeCards);
+}
+
+function FindProduct(product_name, list) {
+    for (var i = 0; i < list.length; i++){
+        if (list[i].name === product_name)
+            return i;
+    }
+    return -1;
+}
+
+// Use on Produce Page
+//
 function LoadCompleteSet() {
-
+    var card_frame = document.createElement("div");
+    card_frame.setAttribute("class", "pr_frame");
+    // add frame to body
+    document.getElementsByTagName("body")[0].appendChild(card_frame);
     loadJSON(function(response) {
         // Parse JSON string into object
         produce_data = JSON.parse(response);
         var produce = produce_data.produce;
 
         for (var i = 0; i != produce.length; i++) {
-            addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available);
+            addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available, card_frame);
         }
+    }, "../produce/produce.json");
 
-        ResizeCards();
-
-    });
+    setTimeout(function(){ResizeCards()}, 5);
+    window.addEventListener("resize", ResizeCards);
 
 }
 
+// returns  number of cards in one line
 function ResizeCards() {
-
-    var card = document.getElementsByClassName("card_container")[0];
+    var resize_frame = document.getElementsByClassName("pr_frame")[0];
+    if (resize_frame.getElementsByClassName("card_container").length == 0) {
+        alert("no produce cards found");
+        return;
+    }
+    var num_cards = 0;
+    for (var i = 0; i < resize_frame.getElementsByClassName("card_container").length; i++){
+        if (resize_frame.getElementsByClassName("card_container")[i].display != "none")
+            num_cards++;
+    }
+    var card = resize_frame.getElementsByClassName("card_container")[0];
     var style = card.currentStyle || window.getComputedStyle(card);
 
     var wpc = card.offsetWidth + parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
     var min_margin = 0.22 * window.innerWidth;
     if (Math.floor((window.innerWidth - min_margin) / wpc) < 2) {
-        card_frame.style.width = 2 * wpc;
-        return;
+        resize_frame.style.width = 2 * wpc + "px";
+        return 2;
+    } else if (Math.floor((window.innerWidth - min_margin) / wpc) > num_cards){
+        resize_frame.style.width = wpc * num_cards + "px";
+        return num_cards;
     }
-    card_frame.style.width = Math.floor((window.innerWidth - min_margin) / wpc) * wpc + "px";
+    else {
+        resize_frame.style.width = Math.floor((window.innerWidth - min_margin) / wpc) * wpc + "px";
+        return resize_frame.offsetWidth / wpc;
+    }
 }
-
-window.addEventListener("resize", ResizeCards);

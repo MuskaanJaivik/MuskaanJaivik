@@ -74,10 +74,11 @@
 	position: relative;
 }
 
-.card_container:hover .card, .card_container.hover .card, .card_container.flip .card {
+/*.card_container:hover .card, .card_container.hover .card, .card_container.flip .card {*/
+/*.card_container > active .card {
     -webkit-transform: rotateY(-180deg);
             transform: rotateY(-180deg);
-}
+}*/
 
 .front, .back {
     width: 100%;

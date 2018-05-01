@@ -35,12 +35,63 @@ function getRandomColor() {
     return color;
 }
 
+// click/touch handler
+function ClickHandler() {
+    if (this.getElementsByClassName("active").length == 0) {
+        var t = document.createElement("div");
+        t.setAttribute("class", "active");
+        this.appendChild(t)
+    }
+    else
+        this.removeChild(this.getElementsByClassName("active")[0]);
+    UpdateRotation(this);
+}
+
+// hover start handler
+function MouseEnter() {
+    if (this.getElementsByClassName("hover").length == 0 && this.getElementsByClassName("active").length == 0){
+        var t = document.createElement("div");
+        t.setAttribute("class", "hover");
+        this.appendChild(t)
+    }
+    UpdateRotation(this);
+}
+
+function isHover(e) {
+    return (e.querySelector(':hover') === e);
+}
+
+// hover end handler
+function MouseOut(e) {
+    if (/*!isHover(this) && */this.getElementsByClassName("hover").length != 0)
+        this.removeChild(this.getElementsByClassName("hover")[0]);
+    UpdateRotation(this);
+}
+
+function UpdateRotation(cardcont) {
+    var card = cardcont.getElementsByClassName("card")[0];
+    if (cardcont.getElementsByClassName("active").length != 0 || cardcont.getElementsByClassName("hover").length != 0) {
+        card.style.webkitTransform = "rotateY(-180deg)";
+        card.style.transform = "rotateY(-180deg)";
+    }
+    else {
+        card.style.webkitTransform = "rotateY(0deg)";
+        card.style.transform = "rotateY(0deg)";
+    }
+}
+
 function addCard(name, image, quantity, harvest, available, frame) {
     // card container
     var card_container = document.createElement("div");
     card_container.setAttribute("class", "card_container");
     //card_container.setAttribute("ontouchstart", "this.classList.toggle('hover');")
-    card_container.setAttribute("ontouchend", "this.classList.toggle('hover');")
+    //card_container.setAttribute("ontouchend", "this.classList.toggle('hover');")
+    //card_container.addEventListener("click", TouchHandler);
+    /*card_container.setAttribute("ontouchend", "this.classList.toggle('touch');");
+    card_container.setAttribute("onhover", "this.classList.toggle('touch');");*/
+    card_container.addEventListener("click", ClickHandler);
+    card_container.addEventListener("mouseover", MouseEnter);
+    card_container.addEventListener("mouseout", MouseOut);
 
     // card
     var card = document.createElement("div");
@@ -132,13 +183,13 @@ function addCard(name, image, quantity, harvest, available, frame) {
 function LoadLine(products, frame) {
     LoadCards(products, frame);
     window.addEventListener("resize", function(){ setTimeout(TruncLine, 10)});
-    setTimeout(TruncLine, 10);
+    //setTimeout(TruncLine, 10);
 }
 
 function TruncLine() {
     var resize_frame = document.getElementsByClassName("pr_frame")[0];
     if (resize_frame.getElementsByClassName("card_container").length == 0) {
-        alert("no produce cards found");
+        alert("(TruncLine) no produce cards found");
         return;
     }
     var card = resize_frame.getElementsByClassName("card_container")[0];
@@ -156,11 +207,13 @@ function LoadCards(products, frame) {
         for (var i = 0; i < products.length; i++){
             var pr = FindProduct(products[i], produce_list);
             if (pr == -1) continue;
-            else addCard(produce_list[pr].name, "../img/produce/" + produce_list[i].name.toLowerCase() + ".jpg", produce_list[pr].quantity, produce_list[pr].harvest, produce_list[pr].available, frame);
+            else addCard(produce_list[i].name, "../img/produce/" + produce_list[i].name.toLowerCase() + ".jpg", produce_list[pr].quantity, produce_list[pr].harvest, produce_list[pr].available, frame);
         }
+        ResizeCards();
+        TruncLine();
     }, "produce/produce.json");
     
-    setTimeout(function(){ResizeCards()}, 5);
+//    setTimeout(function(){ResizeCards()}, 50);
     window.addEventListener("resize", ResizeCards);
 }
 
@@ -187,9 +240,10 @@ function LoadCompleteSet() {
         for (var i = 0; i != produce.length; i++) {
             addCard(produce[i].name, "../img/produce/" + produce[i].name.toLowerCase() + ".jpg", produce[i].quantity, produce[i].harvest, produce[i].available, card_frame);
         }
+        ResizeCards();
     }, "../produce/produce.json");
 
-    setTimeout(function(){ResizeCards()}, 5);
+    //setTimeout(function(){ResizeCards()}, 50);
     window.addEventListener("resize", ResizeCards);
 
 }
@@ -198,7 +252,7 @@ function LoadCompleteSet() {
 function ResizeCards() {
     var resize_frame = document.getElementsByClassName("pr_frame")[0];
     if (resize_frame.getElementsByClassName("card_container").length == 0) {
-        alert("no produce cards found");
+        alert("(ResizeCards) no produce cards found");
         return;
     }
     var num_cards = 0;
@@ -211,8 +265,10 @@ function ResizeCards() {
 
     var wpc = card.offsetWidth + parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
     var min_margin = 0.22 * window.innerWidth;
+    if (document.getElementsByTagName("body")[0].getAttribute("id") == "home-page")
+        min_margin = 10;
     if (Math.floor((window.innerWidth - min_margin) / wpc) < 2) {
-        resize_frame.style.width = 2 * wpc + "px";
+        resize_frame.style.width = 2 * wpc + 2 + "px";
         return 2;
     } else if (Math.floor((window.innerWidth - min_margin) / wpc) > num_cards){
         resize_frame.style.width = wpc * num_cards + "px";

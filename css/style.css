@@ -53,4 +53,8 @@ body {
   .textsec center {
     text-align: left;
   }
+
+  .textsec h1 {
+    text-align: center;
+  }
 }

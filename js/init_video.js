@@ -28,7 +28,7 @@ function onYouTubeIframeAPIReady() {
     //cover.setAttribute("style", "position: absolute; left: " + GetAbsoluteOffset(document.getElementById("player")).left + "; top: " + GetAbsoluteOffset(document.getElementById("player")).top + "px; background-color: rgba(255, 0, 0, 0.5); width: " + document.getElementById("player").offsetWidth + "px; height: " + document.getElementById("player").offsetHeight + "px; z-index: 30;");
     cover.style.position = "absolute";
     cover.style.backgroundColor = "rgba(0, 0, 0, 0)";
-    cover.style.zIndex = "30";
+    cover.style.zIndex = document.getElementById("topnav_container").style.zIndex - 1;
     Conceal(cover);
     cover.click(function(event){event.stopPropagation();});
 }

@@ -61,6 +61,7 @@ createHamburgerIcon();
 function createNavContainer() {
     var container = document.createElement("div");
     container.setAttribute("id", "topnav_container");
+    container.style.zIndex = 40;
     document.getElementsByTagName("body")[0].appendChild(container);
     return container;
 }

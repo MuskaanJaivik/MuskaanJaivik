@@ -9,11 +9,22 @@ function InitMap() {
 
   SetStyle(map);
 
-  // example marker:
+  // farmercenter marker:
   var marker = new google.maps.Marker({
     map: map, 
-    position: new google.maps.LatLng(31.381108, 77.124379)
+    position: new google.maps.LatLng(31.381108, 77.124379),
+    title: "Farmer Center",
+    icon: {
+      url: "marker.svg",
+      color: "red",
+      scaledSize: new google.maps.Size(32, 32)
+    }
   });
+
+  /*var iconBase = 'https://maps.google.com/mapfiles/kml/shapes/';
+  var icons = {
+    "farmer_center": "../foo.png"
+  };*/
 
   map.addListener('zoom_changed', function() { 
     SetStyle(map);
@@ -84,7 +95,8 @@ function CenterControl(controlDiv, map) {
   controlUI.style.borderRadius = '3px';
   controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
   controlUI.style.cursor = 'pointer';
-  controlUI.style.marginBottom = '22px';
+  controlUI.style.margin = '10px';
+  controlUI.style.opacity = "1";
   controlUI.style.textAlign = 'center';
   controlUI.title = 'Click to change map zoom';
   controlDiv.appendChild(controlUI);

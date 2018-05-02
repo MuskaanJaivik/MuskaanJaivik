@@ -1,6 +1,6 @@
 var frame = document.getElementById("hpimgwall");
 
-const pic_min_width = 400;
+const pic_min_width = 350;
 var image_list;
 var on_display = []; // keep track of all images that are shown at a time
 var parcels = Rasterize();
@@ -60,7 +60,7 @@ function AddParcel(x, y, width, height, margin) {
   //par.style.backgroundImage = "url(img/wall/img" + Math.floor(Math.random()*87) + ".jpg)";
   first.style.backgroundImage = "url(img/wall/" + GetRandomImgMultipleRatios(["0.6", "0.7", "0.8"]) + ")";
   second.style.backgroundImage = "url(img/wall/" + GetRandomImgMultipleRatios(["0.6", "0.7", "0.8"]) + ")";
-  setTimeout(function(){ SwitchImage(par, ["0.6", "0.7", "0.8"]) }, 2000 + (Math.random()*20)*1000);
+  setTimeout(function(){ SwitchImage(par, ["0.6", "0.7", "0.8"]) }, 1000 + (Math.random()*20)*1000);
   return par;
 }
 

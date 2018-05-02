@@ -31,7 +31,7 @@ logo_text.addEventListener("click", function(){
 var contact = createTab("Contact", "/contact/")
 var photos = createTab("Photos", "/photos/")
 var blog = createTab("Blog", "/blog/")
-var projects = createTab("Project", "/projects/")
+var projects = createTab("Projects", "/projects/")
 var produce = createTab("Produce", "/produce/")
 
 // Set Active

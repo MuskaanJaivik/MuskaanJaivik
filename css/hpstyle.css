@@ -23,6 +23,8 @@
   height: 45px;
   border: none;
   background-color: lightgoldenrodyellow;
+  outline: none;
+  border: 0px;
   border-radius: 3px;
   color: #555555;
   font-family: "Roboto", sans-serif;

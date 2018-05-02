@@ -44,6 +44,10 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-117704903-1');
 
+// require.js
+var src = AddElement("script");
+scr.setAttribute("src", path_suffix + "js/require.js");
+
 function AddElement(tag) {
     var element = document.createElement(tag);
     head.appendChild(element);

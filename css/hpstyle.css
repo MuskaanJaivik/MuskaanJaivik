@@ -55,17 +55,36 @@
 #hpimgwall {
   width: 90%;
   height: 80vh;
-  background-color: ivory;
+  background-color: inherit;
   margin-left: auto;
   margin-right: auto;
   margin-top: 50px;
-  margin-bottom: 50px;
+  margin-bottom: 150px;
+  display: flex;
+  flex-wrap: wrap;
 }
 .parcel {
-  display: inline-block;
   position: relative;
+  background-color: gray;
+  opacity: 1;
   margin: 0px;
   padding: 0px;
+  border: 0px;
+  font-size: 0;
+}
+.parcel .first {
+  opacity: 1;
+  background-size: cover;
+  background-position: center center;
+  background-color: ivory;
+  transition: opacity 1s ease-in-out;
+}
+.parcel .second {
+  opacity: 0;
+  background-size: cover;
+  background-position: center center;
+  background-color: lightgoldenrodyellow;
+  transition: opacity 1s ease-in-out;
 }
 
 #hps_where {
@@ -131,6 +150,10 @@
   margin-right: 0.3em;
 }
 
+#pgs_quote {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
 #pgs_quote .source {
   margin-left: 1em;
 }

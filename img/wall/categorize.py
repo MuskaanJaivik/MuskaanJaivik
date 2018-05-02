@@ -4,7 +4,7 @@ from PIL import Image
 
 images = []
 
-rotate = [4,13,14,17,22,43,67]
+rotate = []
 for i in range(len(rotate)):
     rotate[i] = "img" + str(rotate[i]) + ".jpg"
 print(rotate)

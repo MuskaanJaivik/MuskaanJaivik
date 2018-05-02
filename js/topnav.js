@@ -211,3 +211,10 @@ function drawLogo(canvas) {
     ctx.closePath();
     ctx.fill();
 }
+
+// Hide Navbar when scrolling down
+
+var scroll_old = 0;
+window.addEventListener("scroll", function() {
+    
+});

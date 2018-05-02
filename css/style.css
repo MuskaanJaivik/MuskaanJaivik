@@ -63,4 +63,9 @@ body {
     margin-right: auto;
     width: 25vw;
   }
+
+  .textsec h1 hr {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }

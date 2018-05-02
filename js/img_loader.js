@@ -101,6 +101,7 @@ function GetBackgroundImage(parcel) {
 }
 
 function ImgResizeHandler() {
+  return; // buggy
   while (frame.getElementsByClassName("parcel").length > 0)
     frame.removeChild(frame.getElementsByClassName("parcel")[0]);
   parcels = Rasterize();

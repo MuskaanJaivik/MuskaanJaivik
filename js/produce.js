@@ -266,7 +266,7 @@ function ResizeCards() {
     var wpc = card.offsetWidth + parseInt(style.marginLeft, 10) + parseInt(style.marginRight, 10);
     var min_margin = 0.22 * window.innerWidth;
     if (document.getElementsByTagName("body")[0].getAttribute("id") == "home-page")
-        min_margin = 10;
+        min_margin = window.innerWidth * 0.1;//10;
     if (Math.floor((window.innerWidth - min_margin) / wpc) < 2) {
         resize_frame.style.width = 2 * wpc + 2 + "px";
         return 2;

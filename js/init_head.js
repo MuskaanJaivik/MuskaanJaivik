@@ -29,6 +29,7 @@ AddExternCSS("https://fonts.googleapis.com/icon?family=Material+Icons");
 AddCSS("style");
 AddCSS("topnav");
 AddCSS("hamburgers");
+AddCSS("img_framework");
 
 // Icon
 var icon = AddElement("link");
@@ -44,9 +45,10 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'UA-117704903-1');
 
-// require.js
-var src = AddElement("script");
-scr.setAttribute("src", path_suffix + "js/require.js");
+// Img Framework
+var scr = AddElement("script");
+scr.setAttribute("src", path_suffix + "js/img_framework.js");
+scr.setAttribute("id", "img_framework_script");
 
 function AddElement(tag) {
     var element = document.createElement(tag);

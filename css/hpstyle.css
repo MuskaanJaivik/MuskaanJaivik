@@ -107,6 +107,24 @@
   transition: opacity 1s ease-in-out;
 }
 
+#hp_img_wall_container {
+  width: 100%;
+  background-color: gainsboro;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+#hp_img_wall {
+  width: 90%;
+  height: 74vh;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: inherit;
+  position: relative;
+}
+
 #hps_where {
   width: 100%;
   height: auto;

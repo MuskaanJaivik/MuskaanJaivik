@@ -17,7 +17,7 @@ function onYouTubeIframeAPIReady() {
         playerVars: { "autoplay": 1, "rel": 0, "disablekb": 1, "controls": 0, "showinfo": 0, "modestbranding": 1 },
         
         events: {
-            "onStateChange": function(event) { if (event.data === YT.PlayerState.ENDED) player.playVideo(); }
+            "onStateChange": OnPlayerStateChange
         }
 
     });
@@ -28,9 +28,40 @@ function onYouTubeIframeAPIReady() {
     cover.style.position = "absolute";
     cover.style.backgroundColor = "rgba(0, 0, 0, 0)";
     cover.style.zIndex = document.getElementById("topnav_container").style.zIndex - 1;
+    if (is_playing)
+        cover.style.display = "initial";
+    else
+        cover.style.diplay = "none";
     Conceal(cover);
     cover.click(function(event){event.stopPropagation();});
     window.addEventListener("resize", VidResize);
+
+    setTimeout(KeepPlaying, 3000);
+
+}
+
+var is_playing = false;
+function OnPlayerStateChange(event) {
+    switch (event.data) {
+        case YT.PlayerState.PLAYING:
+            document.getElementById("video_cover").style.display = "initial";
+            is_playing = true;
+            break;
+        case YT.PlayerState.PAUSED:
+            document.getElementById("video_cover").style.display = "none";
+            is_playing = false;
+            player.playVideo();
+            break;
+        case YT.PlayerState.ENDED:
+            player.playVideo();
+            break;
+    }
+}
+
+function KeepPlaying() {
+    if (!is_playing)
+        player.playVideo();
+    setTimeout(KeepPlaying, 3000);
 }
 
 function VidResize() {

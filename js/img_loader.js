@@ -4,7 +4,7 @@ const pic_min_width = 350;
 var image_list;
 var on_display = []; // keep track of all images that are shown at a time
 var parcels = Rasterize();
-window.addEventListener("resize", ImgResizeHandler);
+//window.addEventListener("resize", ImgResizeHandler);
 
 function Rasterize() {
   // Calc pics per row
@@ -15,7 +15,7 @@ function Rasterize() {
   const par_height = 1080 / 1920 * par_width;
 
   // Calc pics per column
-  var pic_per_column = Math.round(frame.offsetHeight / par_height);
+  var pic_per_column = Math.floor((window.innerHeight * 0.8) / par_height);
   //frame.style.height = pic_per_column * par_height + "px !important";
   frame.style.setProperty("height", pic_per_column * par_height + "px", "important");
 
@@ -31,6 +31,9 @@ function Rasterize() {
         pars.push(AddParcel(x * par_width, y * par_height, par_width - (pic_per_row + 1) * margin, par_height - (pic_per_column + 1) * margin, margin));
       }
     }
+
+    OnResizeStop(HandleResize);
+
     return pars;
   }, "img/wall/imgdata.json");
 }
@@ -56,8 +59,6 @@ function AddParcel(x, y, width, height, margin) {
   second.style.height = "100%";
   par.appendChild(second);
 
-  // par.style.backgroundColor = RandomColor();
-  //par.style.backgroundImage = "url(img/wall/img" + Math.floor(Math.random()*87) + ".jpg)";
   first.style.backgroundImage = "url(img/wall/" + GetRandomImgMultipleRatios(["0.6", "0.7", "0.8"]) + ")";
   second.style.backgroundImage = "url(img/wall/" + GetRandomImgMultipleRatios(["0.6", "0.7", "0.8"]) + ")";
   setTimeout(function(){ SwitchImage(par, ["0.6", "0.7", "0.8"]) }, 1000 + (Math.random()*20)*1000);
@@ -100,13 +101,6 @@ function GetBackgroundImage(parcel) {
     return name.replace('")', "");
 }
 
-function ImgResizeHandler() {
-  return; // buggy
-  while (frame.getElementsByClassName("parcel").length > 0)
-    frame.removeChild(frame.getElementsByClassName("parcel")[0]);
-  parcels = Rasterize();
-}
-
 function loadJSON(callback, file) {
   var xobj = new XMLHttpRequest();
   xobj.overrideMimeType("application/json");
@@ -117,4 +111,32 @@ function loadJSON(callback, file) {
     }
   };
   xobj.send(null);
+}
+
+function OnResizeStop(callback){
+  var in_process = false;
+  var timeout;
+  var delay = 100;
+  window.addEventListener("resize", function() {
+    if (!in_process){
+      in_process = true;
+      timeout = setTimeout(function() {in_process = false; callback();}, delay);
+    } else {
+      clearTimeout(timeout);
+      timeout = setTimeout(function() {in_process = false; callback();}, delay);
+    }
+  })
+}
+
+function HandleResize() {
+  while (frame.getElementsByClassName("parcel").length > 0)
+    frame.removeChild(frame.getElementsByClassName("parcel")[0]);
+  on_display = [];
+  parcels = [];
+  //<div id="wallcontainer"><div id="hpimgwall"></div>
+  document.getElementById("wallcontainer").removeChild(frame);
+  frame = document.createElement("div");
+  frame.setAttribute("id", "hpimgwall");
+  document.getElementById("wallcontainer").appendChild(frame);
+  setTimeout(function(){parcels = Rasterize();}, 1000);
 }

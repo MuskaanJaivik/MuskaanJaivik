@@ -41,16 +41,16 @@ switch (document.getElementsByTagName("body")[0].getAttribute("id")) {
     case ("contact-page"):
         contact.setAttribute("id", "active");
         break;
-    case ("home-page"):
+    case ("photos-page"):
         photos.setAttribute("id", "active");
         break;
-    case ("home-page"):
+    case ("blog-page"):
         blog.setAttribute("id", "active");
         break;
-    case ("home-page"):
+    case ("projects-page"):
         projects.setAttribute("id", "active");
         break;
-    case ("home-page"):
+    case ("produce-page"):
         produce.setAttribute("id", "active");
         break;
 }

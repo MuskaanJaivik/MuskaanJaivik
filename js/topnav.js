@@ -36,8 +36,6 @@ var produce = createTab("Produce", "/produce/")
 
 // Set Active
 switch (document.getElementsByTagName("body")[0].getAttribute("id")) {
-    case ("home-page"):
-        logo.setAttribute("id", "active");
     case ("contact-page"):
         contact.setAttribute("id", "active");
         break;

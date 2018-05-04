@@ -10,8 +10,8 @@ var player;
 function onYouTubeIframeAPIReady() {
     var ww = window.innerWidth;
     player = new YT.Player("player", {
-        width: document.getElementsByTagName("body")[0].offsetWidth,
-        height: document.getElementsByTagName("body")[0].offsetWidth * 0.5625,
+        width: window.innerWidth * 1,//document.getElementsByTagName("body")[0].offsetWidth,
+        height: window.innerWidth * 1 * 0.5625,
         videoId: "YWqyQSuxt3s",
 
         playerVars: { "autoplay": 1, "rel": 0, "disablekb": 1, "controls": 0, "showinfo": 0, "modestbranding": 1 },
@@ -21,6 +21,14 @@ function onYouTubeIframeAPIReady() {
         }
 
     });
+
+    document.getElementById("video_container").style.height = (window.innerHeight - document.getElementById("topnav_container").offsetHeight) * 0.9 + "px";
+    var dif = (document.getElementById("player").offsetHeight - document.getElementById("video_container").offsetHeight) * 0.5;
+    document.getElementById("player").style.transform = "translateY(-" + dif + "px)";
+    document.getElementById("player").style.webkitTransform = "translateY(-" + dif + "px)";
+    var container = document.getElementById("video_container");
+    if (container.offsetHeight > document.getElementById("player").offsetHeight)
+        container.style.height = document.getElementById("player").offsetHeight + "px";
 
     var cover = document.createElement("div");
     document.getElementsByTagName("body")[0].appendChild(cover);
@@ -66,8 +74,12 @@ function KeepPlaying() {
 
 function VidResize() {
     var vid = document.getElementById("player");
-    vid.style.width = document.getElementsByTagName("body")[0].offsetWidth + "px";
-    vid.style.height = document.getElementsByTagName("body")[0].offsetWidth * 0.5625 + "px";
+    vid.style.width = window.innerWidth * 1 + "px";
+    vid.style.height = window.innerWidth * 1 * 0.5625 + "px";
+    document.getElementById("video_container").style.height = parseInt(vid.style.height, 10) + "px"//(window.innerHeight - document.getElementById("topnav_container").offsetHeight) * 0.9 + "px";
+    var dif = (document.getElementById("player").offsetHeight - document.getElementById("video_container").offsetHeight) * 0.5;
+    document.getElementById("player").style.transform = "translateY(-" + dif + "px)";
+    document.getElementById("player").style.webkitTransform = "translateY(-" + dif + "px)";
     Conceal(document.getElementById("video_cover"));
 }
 

@@ -1,4 +1,75 @@
 
+#home-page {
+  overflow-x: hidden;
+}
+
+/***********
+  Top Banner
+************/
+.banner {
+  position: relative;
+  width: 100%;
+  height: 10vh;
+
+  background-image: url("../img/banner2.jpg");
+  background-position: center bottom;
+  background-size: cover;
+
+  background-attachment: fixed;
+  color: snow;
+}
+
+.banner #banner_text {
+  position: absolute;
+  top: 15vmin;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  text-align: center;
+  font-family: "Laila", serif;
+  width: 90%;
+  font-weight: bold;
+}
+
+.banner i {
+  font-size: 55px;
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  -webkit-transform: translateX(-50%) translateY(-100%);
+  -ms-transform: translateX(-50%) translateY(-100%);
+  transform: translateX(-50%) translateY(-100%);
+}
+
+.banner i:hover {
+  cursor: pointer;
+}
+
+.banner #banner_text span {
+  display: inline-block;
+  margin-right: 0.3em;
+}
+
+@media only screen and (min-width: 500px) {
+  .banner {
+    font-size: 40px;
+  }
+}
+@media only screen and (max-width: 499px) {
+  .banner {
+    font-size: 8vw;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .banner {
+    background-attachment: initial;
+  }
+}
+
+/***********
+  Products
+************/
 #hps_product {
   width: 100%;
   background-color: rgb(215, 235, 173);
@@ -32,6 +103,19 @@
   transition: all .15s ease-in-out;
 }
 
+#cfback {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+}
+#hps_cardframe {
+  /*height: 70vh;*/
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
 #hps_product .textsec input:hover {
   cursor: pointer;
   /*transition: all 0.3s ease-in-out;*/
@@ -51,62 +135,24 @@
   }
 }
 
-#cfback {
-  width: 100%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  
+/***********
+  PGS Quote
+************/
+#pgs_quote {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+#pgs_quote .source {
+  margin-left: 1em;
+}
+#pgs_quote .source abbr {
+  text-decoration: none;
+  border-bottom: none;
 }
 
-#hps_cardframe {
-  /*height: 70vh;*/
-  width: 100%;
-  height: 400px;
-  overflow: hidden;
-}
-
-#wallcontainer {
-  width: 100%;
-  background-color: gainsboro;
-  padding-top: 50px;
-  padding-bottom: 50px;
-  margin-bottom: 0px;
-}
-#wallcontainer #hpimgwall {
-  width: 90%;
-  height: 80vh;
-  background-color: inherit;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  display: flex;
-  flex-wrap: wrap;
-}
-.parcel {
-  position: relative;
-  background-color: gray;
-  opacity: 1;
-  margin: 0px;
-  padding: 0px;
-  border: 0px;
-  font-size: 0;
-}
-.parcel .first {
-  opacity: 1;
-  background-size: cover;
-  background-position: center center;
-  background-color: ivory;
-  transition: opacity 1s ease-in-out;
-}
-.parcel .second {
-  opacity: 0;
-  background-size: cover;
-  background-position: center center;
-  background-color: lightgoldenrodyellow;
-  transition: opacity 1s ease-in-out;
-}
-
+/***********
+  Image Wall
+************/
 #hp_img_wall_container {
   width: 100%;
   background-color: gainsboro;
@@ -125,6 +171,9 @@
   position: relative;
 }
 
+/***********
+  Map
+************/
 #hps_where {
   width: 100%;
   height: auto;
@@ -150,96 +199,117 @@
   margin-top: 0px;
 }
 
-#video_container {
-  margin-top: 200px;
-}
+/***********
+  Principles
+************/
 
-.banner {
-  position: relative;
+#principle_frame {
   width: 100%;
-  height: 10vh;
-
-  background-image: url("../img/banner2.jpg");
-  background-position: center bottom;
-  background-size: cover;
-
-  background-attachment: fixed;
-  color: snow;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  /*background-color: powderblue;*/
+  background-color: peru;
+  /*background-color: rgb(203, 168,143);*/
 }
 
-.banner #banner_text {
-  position: absolute;
-  /*top: 17%;*/
-  top: 15vmin;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
+#principle_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-left: auto;
+  margin-right: auto;
+  /*max-width: 90vw;*/
+  align-items: center;
+  justify-content: center;
+  background-color: inherit;
+}
+
+#principle {
+  font-family: "Roboto", sans-serif;
+  color: #222222;
+  width: 250px;
+  height: 300px;
+  margin: 1vw;
+  background-color: snow;
+  border-radius: 2px;
+  box-shadow: 5px 7px 15px 2px rgb(103, 67, 32);
+}
+
+#principle h1 {
+  font-weight: normal;
+  font-size: 25px;
   text-align: center;
-  font-family: "Laila", serif;
-  width: 90%;
-  font-weight: bold;
+}
+#principle h1 b {
+  color: olivedrab;
+}
+#principle .principle_box {
+  position: relative;
+  display: block;
+  margin-left: 10%;
+  margin-right: 10%;
+  font-size: 18px;
+  line-height: 140%;
+  text-align: left;
 }
 
-.banner i {
-  font-size: 55px;
-  position: absolute;
-  left: 50%;
-  top: 100%;
-  -webkit-transform: translateX(-50%) translateY(-100%);
-  -ms-transform: translateX(-50%) translateY(-100%);
-  transform: translateX(-50%) translateY(-100%);
-}
-
-.banner i:hover {
-  cursor: pointer;
-}
-
-.banner #banner_text span {
-  display: inline-block;
-  margin-right: 0.3em;
-}
-
-#pgs_quote {
-  margin-top: 150px;
-  margin-bottom: 150px;
-}
-#pgs_quote .source {
-  margin-left: 1em;
-}
-#pgs_quote .source abbr {
-  text-decoration: none;
-  border-bottom: none;
-}
-
-@media only screen and (min-width: 500px) {
-  .banner {
-    font-size: 40px;
+@media only screen and (min-width: calc(4 * (250px + 2 * 1vw) + 20vw)) {
+  #principle_container {
+    /*width: calc(4 * 250px + 4 * 2 * 20px);*/
+    width: calc(4 * (250px + 2 * 20px));
   }
 }
-@media only screen and (max-width: 499px) {
-  .banner {
-    font-size: 8vw;
+@media only screen and (max-width: calc(4 * (250px + 2 * 1vw) + 20vw - 1px)) and (min-width: calc(2 * (250px + 2 * 1vw) + 20vw)) {
+  #principle_container {
+    width: calc(2 * (250px + 2 * 20px));
   }
 }
-@media only screen and (max-width: 600px) {
-  .banner {
-    background-attachment: initial;
+@media only screen and (max-width: calc(2 * (250px + 2 * 1vw) + 20vw - 1px)) {
+  #principle_container {
+    width: 90%;
+  }
+  #principle {
+    width: 100%;
+  }
+  #principle h1 {
+    margin-top: 40px;
+  }
+  #principle .principle_box {
+    margin-top: 40px;
+    font-size: 18px;
   }
 }
 
-#id {
-  width: 90vw;
-  margin-left: 0px;
-  margin-right: 0px;
-  padding: 0px;
+/***********
+  Video
+************/
+#vid_container_frame {
+  margin-top: 50px;
+  background-color: gainsboro;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+#video_container {
+  margin: 0px;
+  background-color: inherit;
   overflow: hidden;
+  width: 100vw;
+  padding: 0px;
+}
+#video_container #player {
+  display: relative;
+  margin: 0px;
+  bottom: 0px;
 }
 
+/***********
+  Footer
+************/
 .footer {
   width: 100%;
   height: 20vh;
-  margin-top: 20vh;
+  margin: 0px;
   background-color: snow;
   border-top: solid;
   border-color: #55555555;

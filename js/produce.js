@@ -189,7 +189,7 @@ function LoadLine(products, frame) {
 function TruncLine() {
     var resize_frame = document.getElementsByClassName("pr_frame")[0];
     if (resize_frame.getElementsByClassName("card_container").length == 0) {
-        alert("(TruncLine) no produce cards found");
+        console.log("(TruncLine) no produce cards found");
         return;
     }
     var card = resize_frame.getElementsByClassName("card_container")[0];
@@ -252,7 +252,7 @@ function LoadCompleteSet() {
 function ResizeCards() {
     var resize_frame = document.getElementsByClassName("pr_frame")[0];
     if (resize_frame.getElementsByClassName("card_container").length == 0) {
-        alert("(ResizeCards) no produce cards found");
+        console.log("(ResizeCards) no produce cards found");
         return;
     }
     var num_cards = 0;

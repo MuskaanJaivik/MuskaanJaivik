@@ -8,10 +8,10 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 //    after the API code downloads.
 var player;
 function onYouTubeIframeAPIReady() {
-    var ww = window.innerWidth;
+    var ww = window.innerWidth * 0.9;
     player = new YT.Player("player", {
-        width: window.innerWidth * 1,//document.getElementsByTagName("body")[0].offsetWidth,
-        height: window.innerWidth * 1 * 0.5625,
+        width: window.innerWidth * 0.9,
+        height: window.innerWidth * 0.9 * 0.5625,
         videoId: "YWqyQSuxt3s",
 
         playerVars: { "autoplay": 1, "rel": 0, "disablekb": 1, "controls": 0, "showinfo": 0, "modestbranding": 1 },
@@ -31,10 +31,11 @@ function onYouTubeIframeAPIReady() {
         container.style.height = document.getElementById("player").offsetHeight + "px";
 
     var cover = document.createElement("div");
-    document.getElementsByTagName("body")[0].appendChild(cover);
+    document.getElementById("hp_content").appendChild(cover);
     cover.setAttribute("id", "video_cover");
     cover.style.position = "absolute";
     cover.style.backgroundColor = "rgba(0, 0, 0, 0)";
+    cover.style.display = "none";
     cover.style.zIndex = document.getElementById("topnav_container").style.zIndex - 1;
     if (is_playing)
         cover.style.display = "initial";
@@ -74,8 +75,8 @@ function KeepPlaying() {
 
 function VidResize() {
     var vid = document.getElementById("player");
-    vid.style.width = window.innerWidth * 1 + "px";
-    vid.style.height = window.innerWidth * 1 * 0.5625 + "px";
+    vid.style.width = window.innerWidth * 0.9 + "px";
+    vid.style.height = window.innerWidth * 0.9 * 0.5625 + "px";
     document.getElementById("video_container").style.height = parseInt(vid.style.height, 10) + "px"//(window.innerHeight - document.getElementById("topnav_container").offsetHeight) * 0.9 + "px";
     var dif = (document.getElementById("player").offsetHeight - document.getElementById("video_container").offsetHeight) * 0.5;
     document.getElementById("player").style.transform = "translateY(-" + dif + "px)";

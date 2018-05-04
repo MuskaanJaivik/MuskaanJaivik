@@ -1,3 +1,4 @@
+var activate_log = false;
 
 // Init Slideshow
 //
@@ -8,14 +9,12 @@ function InitSlideShow(target, img_path = "img/slides/") {
     slide2.setAttribute("class", "img_slide");
     target.appendChild(slide1);
     target.appendChild(slide2);
-    slide1.style.backgroundColor = "rgba(100, 50, 50, 0.2)";
-    slide2.style.backgroundColor = "rgba(50, 100, 50, 0.2)";
     slide1.style.left = "0%";
     slide2.style.left = "100%";
     slide1.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
     slide2.style.backgroundImage = 'url("' + img_path + "img1.jpg" + '")';
 
-    setTimeout(function(){StartSlide(target, img_path)}, 5000);
+    setTimeout(function(){StartSlide(target, img_path)}, 4000);
 }
 
 // Start Slide
@@ -26,7 +25,7 @@ function StartSlide(target, img_path) {
     slide_iteration++;
     var left_slide;
     var right_slide;
-    console.log("[0]: " + parseInt(target.getElementsByClassName("img_slide")[0].style.left, 10) + " [1]: " + parseInt(target.getElementsByClassName("img_slide")[1].style.left, 10));
+    if (activate_log) console.log("[0]: " + parseInt(target.getElementsByClassName("img_slide")[0].style.left, 10) + " [1]: " + parseInt(target.getElementsByClassName("img_slide")[1].style.left, 10));
     if (parseInt(target.getElementsByClassName("img_slide")[0].style.left, 10) < parseInt(target.getElementsByClassName("img_slide")[1].style.left, 10)) {
         left_slide = target.getElementsByClassName("img_slide")[0];
         right_slide = target.getElementsByClassName("img_slide")[1];
@@ -42,14 +41,14 @@ function StartSlide(target, img_path) {
         left_slide.style.left = (slide_iteration+1) * 100 + "%";
         var next_num = Number(parseInt(right_slide.style.backgroundImage.replace(/\D/g,''), 10)) + 1;
         var next_file = img_path + "img" + next_num + ".jpg";
-        console.log(next_file);
+        if (activate_log) console.log(next_file);
         if (FileExists(next_file))
             left_slide.style.backgroundImage = 'url("' + next_file + '")';
         else {
             left_slide.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
         }
-        console.log(left_slide.style.backgroundImage);
-        setTimeout(function(){StartSlide(target, img_path)}, 5000);
+        if (activate_log) console.log(left_slide.style.backgroundImage);
+        setTimeout(function(){StartSlide(target, img_path)}, 9000);
     }, 1050);
 }
 

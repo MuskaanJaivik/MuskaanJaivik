@@ -27,4 +27,5 @@
     transition: transform 1s ease-in-out;
     background-size: cover;
     background-position: center center;
+    background-color: rgba(0, 0, 0, 0);
 }

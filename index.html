@@ -10,112 +10,120 @@
 
     </head>
     <body id="home-page">
+
         <!-- Top Navigation -->
         <script src="js/topnav.js"></script>
 
-        <!-- Top Banner -->
-        <div id="hp_banner">
-            <div id="banner_text"><span>Welcome to</span><span>Muskaan Jaivik SHG</span></div>
-            <i class="material-icons">&#xE313;</i>
-        </div>
-        <script defer>
-            setTimeout(function(){InitSlideShow(document.getElementById("hp_banner"));}, 2000);
-        </script>
+        <div id="hp_content">
 
-        <!-- Intro Text -->
-        <div class="textsec" id="intro_text">
-            <h1>Who We Are<hr></h1>
-            We are a group of organic farmers in beautiful Pangna valley in Himachal Pradesh, India. 
-            Our group was among the first to get certified under the Participatory Guarantee System (PGS) 
-            in our state.  
-            Currently we are fifteen farmers, one fully organic, the rest in the process of converting 
-            their farms to organic farming.
-        </div>
-        
-        <!-- Product Section -->
-        <div id="hps_product">
-            <div class="textsec"><h1>Our Crops<hr></h1><input value="view all" type="button" onclick="location.href='produce';"/></div>
-            <div id="cfback"><div id="hps_cardframe"></div></div>
-            <div class="textsec">
-                Our group grows a wide variety of crops such as Rice, Wheat, Maize, Peas and many more.
+            <!-- Top Banner -->
+            <div id="hp_banner">
+                <div id="banner_text"><span>Welcome to</span><span>Muskaan Jaivik SHG</span></div>
+                <i class="material-icons">&#xE313;</i>
             </div>
-        </div>
-        <script src="js/produce.js"></script>
-        <script defer>LoadLine(["Rice", "Maize", "Wheat", "Potato", "Tomato", "Peas", "Apple", "Anardana", "Pumpkin"], document.getElementById("hps_cardframe"))</script>
+            <script defer>
+                setTimeout(function(){InitSlideShow(document.getElementById("hp_banner"));}, 2000);
+            </script>
 
-        <!-- PGS Quote -->
-        <div class="textsec" id="pgs_quote">
-            <q>
-                Participatory Guarantee Systems are locally focused quality assurance systems.
-                They certify producers based on active participation of stakeholders and are 
-                built on a foundation of trust, social networks and knowledge exchange.
-            </q><small class="source">&#x02500 <abbr title="International Federation of Organic Agriculture Movements">IFOAM</abbr></small>
-        </div>
-
-        <!-- Image Section -->
-        <div id="hp_img_wall_container"><div id="hp_img_wall"></div></div>
-        <script defer>
-            var img_per_row = Math.round(window.innerWidth / 480);
-            var grid = CreateStaticImageGrid(document.getElementById("hp_img_wall"), "img/wall/", 1920/1080, img_per_row, 2);
-        </script>
-
-        <!-- Map -->
-        <div id="hps_where">
-            <div class="textsec"><h1>Where We Are<hr></h1>
-                We live in and around the village Pangna in Mandi District in Himachal Pradesh, which can be seen in the map below as a conglomeration of buildings a 
-                few hundred meter north of the marker. The yellow icon marks the position of the "Farmer Center" which was build to serve as a central hub for our group 
-                and is frequently used for meetings. To change the zoom, click the button in the upper left corner.
+            <!-- Intro Text -->
+            <div class="textsec" id="intro_text">
+                <h1>Who We Are<hr></h1>
+                We are a group of organic farmers in beautiful Pangna valley in Himachal Pradesh, India. 
+                Our group was among the first to get certified under the Participatory Guarantee System (PGS) 
+                in our state.  
+                Currently we are fifteen farmers, one fully organic, the rest in the process of converting 
+                their farms to organic farming.
             </div>
-            <div id="map"></div>
-        </div>
-        <script src="js/init_map.js" defer></script>
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlkGp3-wBC7-SZDdUXNm4ynqNRKifHAIY&region=IN&callback=InitMap" defer></script>
 
-        <!-- Organic Farming Principles -->
-        <div id="principle_frame">
-            <div id="principle_container">
-                <div id="principle">
-                    <h1>Principle of <br><b>HEALTH</b></h1>
-                    <div class="principle_box">
-                        Organic Agriculture should sustain and enhance the health of soil,
-                        plant, animal, human and planet as one and indivisible.
-                    </div>
-                </div>
-                <div id="principle">
-                    <h1>Principle of <br><b>ECOLOGY</b></h1>
-                    <div class="principle_box">
-                        Organic Agriculture should be based on living ecological systems and
-                        cycles, work with them, emulate them and help sustain them.
-                    </div>
-                </div>
-                <div id="principle">
-                    <h1>Principle of <br><b>FAIRNESS</b></h1>
-                    <div class="principle_box">
-                        Organic Agriculture should build on relationships that ensure fairness
-                        with regard to the common environment and life opportunities.
-                    </div>
-                </div>
-                <div id="principle">
-                    <h1>Principle of <br><b>CARE</b></h1>
-                    <div class="principle_box">
-                        Organic Agriculture should be managed in a precautionary and responsible
-                        well-being of current and future generations and the environment.
-                    </div>
+            <!-- Product Section -->
+            <div id="hps_product">
+                <div class="textsec"><h1>Our Crops<hr></h1><input value="view all" type="button" onclick="location.href='produce';"/></div>
+                <div id="cfback"><div id="hps_cardframe"></div></div>
+                <div class="textsec">
+                    Our group grows a wide variety of crops such as Rice, Wheat, Maize, Peas and many more.
                 </div>
             </div>
-        </div>
+            <script src="js/produce.js"></script>
+            <script defer>LoadLine(["Rice", "Maize", "Wheat", "Potato", "Tomato", "Peas", "Apple", "Anardana", "Pumpkin"], document.getElementById("hps_cardframe"))</script>
 
-        <!-- Video -->
-        <div id="vid_container_frame">
-            <div id="video_container">
-                <div id="player"></div>
+            <!-- PGS Quote -->
+            <div class="textsec" id="pgs_quote">
+                <q>
+                    Participatory Guarantee Systems are locally focused quality assurance systems.
+                    They certify producers based on active participation of stakeholders and are 
+                    built on a foundation of trust, social networks and knowledge exchange.
+                </q><small class="source">&#x02500 <abbr title="International Federation of Organic Agriculture Movements">IFOAM</abbr></small>
             </div>
-        </div>
-        <script src="js/init_video.js" defer></script>
 
-        <!-- Footer -->
-        <div class="footer">
-            <div class="textsec">You scrolled all the way down to the bottom... now what?</div>
+            <!-- Image Section -->
+            <div id="hp_img_wall_container"><div id="hp_img_wall"></div></div>
+            <script defer>
+                setTimeout(function(){
+                    var img_per_row = Math.round(window.innerWidth / 480);
+                    var grid = CreateStaticImageGrid(document.getElementById("hp_img_wall"), "img/wall/", 1920/1080, img_per_row, 2);
+                }, 2000);
+            </script>
+
+            <!-- Map -->
+            <div id="hps_where">
+                <div class="textsec"><h1>Where We Are<hr></h1>
+                    We live in and around the village Pangna in Mandi District in Himachal Pradesh, which can be seen in the map below as a conglomeration of buildings a 
+                    few hundred meter north of the marker. The yellow icon marks the position of the "Farmer Center" which was build to serve as a central hub for our group 
+                    and is frequently used for meetings. To change the zoom, click the button in the upper left corner.
+                </div>
+                <div id="map"></div>
+            </div>
+            <script src="js/init_map.js" defer></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlkGp3-wBC7-SZDdUXNm4ynqNRKifHAIY&region=IN&callback=InitMap" defer></script>
+
+            <!-- Organic Farming Principles -->
+            <div id="principle_frame">
+                <div id="principle_title">Principle of Organic Agriculture</div>
+                <div id="principle_container">
+                    <div id="principle">
+                        <h1>Principle of <br><b>HEALTH</b></h1>
+                        <div class="principle_box">
+                            Organic Agriculture should sustain and enhance the health of soil,
+                            plant, animal, human and planet as one and indivisible.
+                        </div>
+                    </div>
+                    <div id="principle">
+                        <h1>Principle of <br><b>ECOLOGY</b></h1>
+                        <div class="principle_box">
+                            Organic Agriculture should be based on living ecological systems and
+                            cycles, work with them, emulate them and help sustain them.
+                        </div>
+                    </div>
+                    <div id="principle">
+                        <h1>Principle of <br><b>FAIRNESS</b></h1>
+                        <div class="principle_box">
+                            Organic Agriculture should build on relationships that ensure fairness
+                            with regard to the common environment and life opportunities.
+                        </div>
+                    </div>
+                    <div id="principle">
+                        <h1>Principle of <br><b>CARE</b></h1>
+                        <div class="principle_box">
+                            Organic Agriculture should be managed in a precautionary and responsible
+                            well-being of current and future generations and the environment.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video -->
+            <div id="vid_container_frame">
+                <div id="video_container">
+                    <div id="player"></div>
+                </div>
+            </div>
+            <script src="js/init_video.js" defer></script>
+
+            <!-- Footer -->
+            <div class="footer">
+                <div class="textsec">You scrolled all the way down to the bottom... now what?</div>
+            </div>
+
         </div>
 
         <script src="js/hpanim.js" type="text/javascript"></script>

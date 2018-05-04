@@ -35,14 +35,14 @@ function ScrollHandler() {
     if (is_touch || isEdge || isSafari)
         return;
     // Scroll whole screen when scrolling down from top
-    if (scroll_old < window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight && !is_scrolling) {
+    if (scroll_old < window.scrollY && window.scrollY < document.getElementById("hp_banner").offsetHeight && !is_scrolling) {
         is_scrolling = true;
         setTimeout(function(){is_scrolling = false}, 500);
         setTimeout(function(){ScrollDown()}, 1);
     }
 
     // Scroll whole screen when scrolling up in banner
-    if (scroll_old > window.scrollY && window.scrollY < document.getElementsByClassName("banner")[0].offsetHeight && !is_scrolling) {
+    if (scroll_old > window.scrollY && window.scrollY < document.getElementById("hp_banner").offsetHeight && !is_scrolling) {
         is_scrolling = true;
         setTimeout(function(){is_scrolling = false}, 500);
         setTimeout(function(){ScrollUp()}, 1);
@@ -52,11 +52,9 @@ function ScrollHandler() {
 
 function ScrollDown() {
     var tmp = document.getElementsByTagName("body")[0].style.overflow;
-    /*document.getElementsByTagName("body")[0].style.overflow = "hidden";
-    setTimeout(function() { document.getElementsByTagName("body")[0].style.overflow = "initial"; }, 300);*/
     window.removeEventListener("scroll", ScrollHandler);
     window.scrollTo({
-        top: document.getElementsByClassName("banner")[0].offsetHeight,
+        top: document.getElementById("hp_banner").offsetHeight,
         behavior: "smooth"
     });
     window.addEventListener("scroll", ScrollHandler);
@@ -78,12 +76,9 @@ window.addEventListener("resize", function() {
 window.addEventListener("scroll", ScrollHandler);
 FitBanner();
 document.getElementsByClassName("material-icons")[0].addEventListener("click", function(){ScrollDown();});
-//document.getElementById("hps_where").style.height = window.innerHeight - document.getElementById("topnav_container").offsetHeight + "px";
-
-//document.getElementsByTagName("body")[0].style.overflow = "hidden";
 
 function FitBanner(){
-    document.getElementsByClassName("banner")[0].style.height = window.innerHeight - calcNavHeight() + "px";
+    document.getElementById("hp_banner").style.height = window.innerHeight - calcNavHeight() + "px";
 }
 
 function calcNavHeight() {

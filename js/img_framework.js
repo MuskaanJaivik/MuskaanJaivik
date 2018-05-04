@@ -1,4 +1,70 @@
 
+// Init Slideshow
+//
+function InitSlideShow(target, img_path = "img/slides/") {
+    var slide1 = document.createElement("div");
+    var slide2 = document.createElement("div");
+    slide1.setAttribute("class", "img_slide");
+    slide2.setAttribute("class", "img_slide");
+    target.appendChild(slide1);
+    target.appendChild(slide2);
+    slide1.style.backgroundColor = "rgba(100, 50, 50, 0.2)";
+    slide2.style.backgroundColor = "rgba(50, 100, 50, 0.2)";
+    slide1.style.left = "0%";
+    slide2.style.left = "100%";
+    slide1.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
+    slide2.style.backgroundImage = 'url("' + img_path + "img1.jpg" + '")';
+
+    setTimeout(function(){StartSlide(target, img_path)}, 5000);
+}
+
+// Start Slide
+var slide_iteration = 0;
+function StartSlide(target, img_path) {
+    if (document.getElementById("banner_text"))
+        document.getElementById("banner_text").style.opacity = "0";
+    slide_iteration++;
+    var left_slide;
+    var right_slide;
+    console.log("[0]: " + parseInt(target.getElementsByClassName("img_slide")[0].style.left, 10) + " [1]: " + parseInt(target.getElementsByClassName("img_slide")[1].style.left, 10));
+    if (parseInt(target.getElementsByClassName("img_slide")[0].style.left, 10) < parseInt(target.getElementsByClassName("img_slide")[1].style.left, 10)) {
+        left_slide = target.getElementsByClassName("img_slide")[0];
+        right_slide = target.getElementsByClassName("img_slide")[1];
+    } else {
+        left_slide = target.getElementsByClassName("img_slide")[1];
+        right_slide = target.getElementsByClassName("img_slide")[0];
+    }
+    // Switch
+    left_slide.style.transform = "translateX(-" + slide_iteration * 100 + "%)";
+    right_slide.style.transform = "translateX(-" + slide_iteration * 100 + "%)";
+    // Set Back Left
+    setTimeout(function(){
+        left_slide.style.left = (slide_iteration+1) * 100 + "%";
+        var next_num = Number(parseInt(right_slide.style.backgroundImage.replace(/\D/g,''), 10)) + 1;
+        var next_file = img_path + "img" + next_num + ".jpg";
+        console.log(next_file);
+        if (FileExists(next_file))
+            left_slide.style.backgroundImage = 'url("' + next_file + '")';
+        else {
+            left_slide.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
+        }
+        console.log(left_slide.style.backgroundImage);
+        setTimeout(function(){StartSlide(target, img_path)}, 5000);
+    }, 1050);
+}
+
+function FileExists(file_url) {
+    try {
+        var http = new XMLHttpRequest();
+        http.open('HEAD', file_url, false);
+        http.send();
+        return http.status != 404;
+    }
+    catch(err) {
+        return false;
+    }
+}
+
 // Create Static Image Grid
 //
 function CreateStaticImageGrid(container, img_path="/img/wall/", img_ratio = 1920 / 1080, img_per_row = 4, img_margin_px = 4) {

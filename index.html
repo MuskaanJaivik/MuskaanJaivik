@@ -22,7 +22,14 @@
                 <i class="material-icons" id="scroll_down_button">&#xE313;</i>
             </div>
             <script defer>
-                setTimeout(function(){InitSlideShow(document.getElementById("hp_banner"));}, 2000);
+                function StartSlides() {
+                    try {
+                        setTimeout(function(){ InitSlideShow(document.getElementById("hp_banner")); }, 1000);
+                    } catch(err) {
+                        setTimeout(StartSlides, 500);
+                    }
+                }
+                StartSlides();
             </script>
 
             <!-- Intro Text -->
@@ -58,10 +65,21 @@
             <!-- Image Section -->
             <div id="hp_img_wall_container"><div id="hp_img_wall"></div></div>
             <script defer>
-                setTimeout(function(){
+                /*setTimeout(function(){
                     var img_per_row = Math.round(window.innerWidth / 480);
                     var grid = CreateStaticImageGrid(document.getElementById("hp_img_wall"), "img/wall/", 1920/1080, img_per_row, 2);
                 }, 2000);
+                */
+                function InitHPGrid() {
+                    try { 
+                        var img_per_row = Math.round(window.innerWidth / 480);
+                        var grid = CreateStaticImageGrid(document.getElementById("hp_img_wall"), "img/wall/", 1920/1080, img_per_row, 2);
+                    }
+                    catch(err) {
+                        setTimeout(InitHPGrid, 500);
+                    }
+                }
+                InitHPGrid();
             </script>
 
             <!-- Map -->

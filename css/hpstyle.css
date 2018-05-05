@@ -29,7 +29,7 @@ body {
 }
 
 #hp_banner #banner_text {
-  position: absolute;
+  position: relative;
   top: 15vmin;
   left: 50%;
   -webkit-transform: translateX(-50%);

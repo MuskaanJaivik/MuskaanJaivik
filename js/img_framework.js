@@ -17,11 +17,12 @@ function InitSlideShow(target, img_path = "img/slides/") {
 
     setTimeout(function(){StartSlide(target, img_path)}, 4000);
     OnResizeStop(function(){MatchSlideSize(target)});
+
 }
 
 function MatchSlideSize(target) {
     for (var i = 0; i < target.getElementsByClassName("img_slide").length; i++) {
-        target.getElementsByClassName("img_slide")[i].style.top = "100px";
+        target.getElementsByClassName("img_slide")[i].style.top = GetTopnavHeight() + "px";
         target.getElementsByClassName("img_slide")[i].style.width = target.offsetWidth + "px";
         target.getElementsByClassName("img_slide")[i].style.height = target.offsetHeight + "px";
     }

@@ -8,9 +8,22 @@ HandleResize();
 
 // Resize Handler
 //
-//OnResizeStop(HandleResize);
+RegisterOnResize();
+function RegisterOnResize() {
+    try {
+        OnResizeStop(HandleResize);
+    } catch {
+        setTimeout(RegisterOnResize, 500);
+    }
+}
 function HandleResize() {
-    document.getElementById("hp_banner").style.height = window.innerHeight - document.getElementById("topnav_container").offsetHeight + "px";
+    try {
+        document.getElementById("hp_banner").style.height = window.innerHeight - GetTopnavHeight() + "px";
+        document.getElementById("hp_banner").style.top = GetTopnavHeight() + "px";
+    }
+    catch {
+        setTimeout(HandleResize, 500);
+    }
 }
 
 // Detect Browser
@@ -24,11 +37,9 @@ function DetectBrowser() {
     // Internet Explorer 6-11
     if ( /*@cc_on!@*/false || !!document.documentMode ) return "internet explorer";
     // Edge 20+
-    if ( !isIE && !!window.StyleMedia ) return "edge";
+    if (!!window.StyleMedia ) return "edge";
     // Chrome 1+
     if ( !!window.chrome && !!window.chrome.webstore ) return "chrome";
-    // Blink engine detection
-    if ( (isChrome || isOpera) && !!window.CSS ) return "blink";
     return "unknown";
 }
 

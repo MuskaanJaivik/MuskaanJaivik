@@ -7,14 +7,15 @@ body {
   margin: 0px;
   padding: 0px;
   border: 0px;
-  width: 100%;
-  overflow: hidden;
+  width: 100vw;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 /***********
   Top Banner
 ************/
-#hp_banner {
+#hp_content #hp_banner {
   position: static;
   width: 100%;
   height: 10vh;
@@ -24,11 +25,13 @@ body {
   background-position: center center;
   background-size: cover;
 
+  overflow: hidden;
+
   /*background-attachment: fixed;*/
   color: snow;
 }
 
-#hp_banner #banner_text {
+#hp_content #hp_banner #banner_text {
   position: relative;
   top: 15vmin;
   left: 50%;
@@ -40,10 +43,12 @@ body {
   width: 90%;
   font-weight: bold;
   z-index: 20;
+  -webkit-transition: opacity .3s ease;
+  -o-transition: opacity .3s ease;
   transition: opacity .3s ease;
 }
 
-#hp_banner i {
+#hp_content #hp_banner i {
   font-size: 55px;
   position: absolute;
   left: 50%;
@@ -54,27 +59,27 @@ body {
   z-index: 20;
 }
 
-#hp_banner i:hover {
+#hp_content #hp_banner i:hover {
   cursor: pointer;
 }
 
-#hp_banner #banner_text span {
+#hp_content #hp_banner #banner_text span {
   display: inline-block;
   margin-right: 0.3em;
 }
 
 @media only screen and (min-width: 500px) {
-  #hp_banner {
+  #hp_content #hp_banner {
     font-size: 40px;
   }
 }
 @media only screen and (max-width: 499px) {
-  #hp_banner {
+  #hp_content #hp_banner {
     font-size: 8vw;
   }
 }
 @media only screen and (max-width: 600px) {
-  #hp_banner {
+  #hp_content #hp_banner {
     background-attachment: initial;
   }
 }
@@ -82,24 +87,24 @@ body {
 /***********
   Products
 ************/
-#hps_product {
+#hp_content #hps_product {
   width: 100%;
   background-color: rgb(215, 235, 173);
   margin-top: 100px;
   padding-bottom: 50px;
 }
 
-#hps_product .textsec {
+#hp_content #hps_product .textsec {
   margin-bottom: 20px;
   padding-bottom: 0px;
   padding-top: 0px;
 }
 
-#hps_product .textsec h1 {
+#hp_content #hps_product .textsec h1 {
   float: left;
 }
 
-#hps_product .textsec input {
+#hp_content #hps_product .textsec input {
   float: right;
   margin-top: 35px;
   width: 100px;
@@ -112,33 +117,36 @@ body {
   color: #555555;
   font-family: "Roboto", sans-serif;
   font-size: 20px;
+  -webkit-transition: all .15s ease-in-out;
+  -o-transition: all .15s ease-in-out;
   transition: all .15s ease-in-out;
 }
 
-#cfback {
+#hp_content #cfback {
   width: 100%;
   padding-top: 20px;
   padding-bottom: 20px;
   
 }
-#hps_cardframe {
+#hp_content #hps_cardframe {
   /*height: 70vh;*/
   width: 100%;
   height: 400px;
   overflow: hidden;
 }
 
-#hps_product .textsec input:hover {
+#hp_content #hps_product .textsec input:hover {
   cursor: pointer;
   /*transition: all 0.3s ease-in-out;*/
-  box-shadow: 0px 0px 2px 5px rgb(207,231,173);
+  -webkit-box-shadow: 0px 0px 2px 5px rgb(207,231,173);
+          box-shadow: 0px 0px 2px 5px rgb(207,231,173);
 }
 
 @media only screen and (max-width: 600px) {
-  #hps_product .textsec h1 {
+  #hp_content #hps_product .textsec h1 {
     float: none;
   }
-  #hps_product .textsec input {
+  #hp_content #hps_product .textsec input {
     float: none;
     display: block;
     position: relative;
@@ -150,14 +158,14 @@ body {
 /***********
   PGS Quote
 ************/
-#pgs_quote {
+#hp_content #pgs_quote {
   margin-top: 150px;
   margin-bottom: 150px;
 }
-#pgs_quote .source {
+#hp_content #pgs_quote .source {
   margin-left: 1em;
 }
-#pgs_quote .source abbr {
+#hp_content #pgs_quote .source abbr {
   text-decoration: none;
   border-bottom: none;
 }
@@ -165,14 +173,14 @@ body {
 /***********
   Image Wall
 ************/
-#hp_img_wall_container {
+#hp_content #hp_img_wall_container {
   width: 100%;
   background-color: gainsboro;
   padding-top: 20px;
   padding-bottom: 20px;
 }
 
-#hp_img_wall {
+#hp_content #hp_img_wall {
   width: 90%;
   height: 74vh;
   margin-left: auto;
@@ -186,7 +194,7 @@ body {
 /***********
   Map
 ************/
-#hps_where {
+#hp_content #hps_where {
   width: 100%;
   height: auto;
   background-color: whitesmoke;
@@ -196,12 +204,12 @@ body {
   padding-top: 100px;
   padding-bottom: 50px;
 }
-#hps_where .textsec {
+#hp_content #hps_where .textsec {
   margin-top: 0px;
   padding-top: 0px;
   margin-bottom: 0px;
 }
-#map {
+#hp_content #map {
   z-index: 1;
   display: block;
   width: 90vw;
@@ -215,7 +223,7 @@ body {
   Principles
 ************/
 
-#principle_frame {
+#hp_content #principle_frame {
   width: 100%;
   padding-top: 50px;
   padding-bottom: 50px;
@@ -224,7 +232,7 @@ body {
   /*background-color: rgb(203, 168,143);*/
 }
 
-#principle_frame #principle_title {
+#hp_content #principle_frame #principle_title {
   color: #222222;
   display: block;
   text-decoration: none;
@@ -234,18 +242,28 @@ body {
   font-weight: bold;
 }
 
-#principle_container {
+#hp_content #principle_container {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   margin-left: auto;
   margin-right: auto;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   background-color: inherit;
 }
 
-.principle {
+#hp_content .principle {
   font-family: "Roboto", sans-serif;
   color: #222222;
   width: 250px;
@@ -253,25 +271,31 @@ body {
   margin: 1vw;
   background-color: snow;
   border-radius: 2px;
-  box-shadow: 5px 7px 15px 2px rgb(103, 67, 32);
+  -webkit-box-shadow: 5px 7px 15px 2px rgb(103, 67, 32);
+          box-shadow: 5px 7px 15px 2px rgb(103, 67, 32);
+  -webkit-transition: all 0.5s ease-out;
+  -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
 }
 
-.principle:hover {
+#hp_content .principle:hover {
   cursor: pointer;
-  box-shadow: 3px 4px 5px 2px rgb(103, 67, 32);
+  -webkit-box-shadow: 3px 4px 5px 2px rgb(103, 67, 32);
+          box-shadow: 3px 4px 5px 2px rgb(103, 67, 32);
+  -webkit-transition: all .1s ease-out;
+  -o-transition: all .1s ease-out;
   transition: all .1s ease-out;
 }
 
-.principle h1 {
+#hp_content .principle h1 {
   font-weight: normal;
   font-size: 25px;
   text-align: center;
 }
-.principle h1 b {
+#hp_content .principle h1 b {
   color: olivedrab;
 }
-.principle .principle_box {
+#hp_content .principle .principle_box {
   position: relative;
   display: block;
   margin-left: 10%;
@@ -282,27 +306,27 @@ body {
 }
 
 @media only screen and (min-width: calc(4 * (250px + 2 * 1vw) + 20vw)) {
-  #principle_container {
+  #hp_content #principle_container {
     /*width: calc(4 * 250px + 4 * 2 * 20px);*/
     width: calc(4 * (250px + 2 * 20px));
   }
 }
 @media only screen and (max-width: calc(4 * (250px + 2 * 1vw) + 20vw - 1px)) and (min-width: calc(2 * (250px + 2 * 1vw) + 20vw)) {
-  #principle_container {
+  #hp_content #principle_container {
     width: calc(2 * (250px + 2 * 20px));
   }
 }
 @media only screen and (max-width: calc(2 * (250px + 2 * 1vw) + 20vw - 1px)) {
-  #principle_container {
+  #hp_content #principle_container {
     width: 90%;
   }
-  #principle {
+  #hp_content #principle {
     width: 100%;
   }
-  #principle h1 {
+  #hp_content #principle h1 {
     margin-top: 40px;
   }
-  #principle .principle_box {
+  #hp_content #principle .principle_box {
     margin-top: 40px;
     font-size: 18px;
   }
@@ -311,7 +335,7 @@ body {
 /***********
   Video
 ************/
-#vid_container_frame {
+#hp_content #vid_container_frame {
   margin-top: 50px;
   /*background-color: gainsboro;*/
   background-color: inherit;
@@ -319,7 +343,7 @@ body {
   padding-top: 30px;
   padding-bottom: 30px;
 }
-#video_container {
+#hp_content #video_container {
   margin-top: 0px;
   margin-bottom: 0px;
   margin-left: auto;
@@ -333,7 +357,7 @@ body {
   border-color: black;
   border-radius: 10px;
 }
-#video_container #player {
+#hp_content #video_container #player {
   display: relative;
   margin: 0px;
   bottom: 0px;
@@ -342,7 +366,7 @@ body {
 /***********
   Footer
 ************/
-.footer {
+#hp_content .footer {
   width: 100%;
   height: 20vh;
   margin: 0px;

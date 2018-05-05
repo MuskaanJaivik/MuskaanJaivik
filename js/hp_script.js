@@ -1,18 +1,23 @@
 
-
 var browser = DetectBrowser();
 console.log("Detected browser: " + browser);
 
 // Adjust Banner Height
 HandleResize();
 
+var is_mobile = IsMobilePhone();
+
 // Resize Handler
 //
 RegisterOnResize();
 function RegisterOnResize() {
+    if (is_mobile) {
+        document.getElementById("hp_banner").style.height = document.getElementById("hp_banner").offsetHeight + "px";
+        return;
+    }
     try {
         OnResizeStop(HandleResize);
-    } catch {
+    } catch(err) {
         setTimeout(RegisterOnResize, 500);
     }
 }
@@ -21,7 +26,7 @@ function HandleResize() {
         document.getElementById("hp_banner").style.height = window.innerHeight - GetTopnavHeight() + "px";
         document.getElementById("hp_banner").style.top = GetTopnavHeight() + "px";
     }
-    catch {
+    catch(err) {
         setTimeout(HandleResize, 500);
     }
 }
@@ -43,7 +48,25 @@ function DetectBrowser() {
     return "unknown";
 }
 
+// Detect Mobile Phone
+//
+function IsMobilePhone() {
+    if (window.innerWidth <= 720 && window.innerHeight <= 1280 && HasTouchScreen() && typeof window.orientation !== 'undefined')
+        return true;
+    else
+        return false;
+}
+
+// Detect Touch Screen
+//
+function HasTouchScreen() {
+    return (('ontouchstart' in window)
+      || (navigator.MaxTouchPoints > 0)
+      || (navigator.msMaxTouchPoints > 0));
+}
+
 // Get Topnav Height
+//
 function GetTopnavHeight() {
     var bottom;
     if (window.innerWidth < 800 && window.innerHeight < 900)
@@ -62,6 +85,7 @@ var scroll_position = 0;
 var scroll_position_old = 0;
 var delta_scroll = 0;
 var body = document.getElementById("hp_content");
+
 // Scroll Event Listener
 //
 window.addEventListener("scroll", function(){
@@ -71,9 +95,25 @@ window.addEventListener("scroll", function(){
     HandleScroll();
 });
 
+// Scroll Button Click
+//
+AddButtonClick();
+function AddButtonClick() {
+    try {
+        document.getElementById("scroll_down_button").addEventListener("click", function(){
+            delta_scroll = 1;
+            HandleScroll();
+        });
+    } catch(err) {
+        setTimeout(AddButtonClick, 500);
+    }
+}
+
 // Handle Scroll Event
 //
 function HandleScroll() {
+    if (HasTouchScreen())
+        return;
     document.getElementById("scroll_down_button").style.opacity = 1 - window.scrollY / (window.innerHeight * 0.2);
     if (in_scroll)
         return;

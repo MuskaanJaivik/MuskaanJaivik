@@ -16,8 +16,17 @@ function InitSlideShow(target, img_path = "img/slides/") {
     slide2.style.backgroundImage = 'url("' + img_path + "img1.jpg" + '")';
 
     setTimeout(function(){StartSlide(target, img_path)}, 4000);
-    OnResizeStop(function(){MatchSlideSize(target)});
+    if (!IsMobilePhone()) OnResizeStop(function(){MatchSlideSize(target)});
 
+}
+
+// Detect Mobile Phone
+//
+function IsMobilePhone() {
+    if (window.innerWidth <= 720 && window.innerHeight <= 1280 && HasTouchScreen() && typeof window.orientation !== 'undefined')
+        return true;
+    else
+        return false;
 }
 
 function MatchSlideSize(target) {
@@ -47,6 +56,8 @@ function StartSlide(target, img_path) {
     // Switch
     left_slide.style.transform = "translateX(-" + slide_iteration * 100 + "%)";
     right_slide.style.transform = "translateX(-" + slide_iteration * 100 + "%)";
+    left_slide.style.webkitTransform = "translateX(-" + slide_iteration * 100 + "%)";
+    right_slide.style.webkitTransform = "translateX(-" + slide_iteration * 100 + "%)";
     // Set Back Left
     setTimeout(function(){
         left_slide.style.left = (slide_iteration+1) * 100 + "%";
@@ -332,3 +343,14 @@ function loadJSON(callback, file) {
     };
     xobj.send(null);
   }
+
+// Get Topnav Height
+//
+function GetTopnavHeight() {
+    var bottom;
+    if (window.innerWidth < 800 && window.innerHeight < 900)
+        bottom = 0.11 * window.innerHeight;
+    else
+        bottom = 100;
+    return bottom;
+}

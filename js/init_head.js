@@ -16,7 +16,7 @@ if (head.hasAttribute("id")) {
 // Viewport
 var vp = AddElement("meta");
 vp.setAttribute("name", "viewport");
-vp.setAttribute("content", "width=device-width, initial-scale=1.0");
+vp.setAttribute("content", "width=device-width, initial-scale=1.0, maximum-scale=1, minimum-scale=1");
 
 // Fonts
 AddExternCSS("https://fonts.googleapis.com/css?family=Open+Sans");

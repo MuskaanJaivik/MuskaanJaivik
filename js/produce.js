@@ -71,12 +71,12 @@ function MouseOut(e) {
 function UpdateRotation(cardcont) {
     var card = cardcont.getElementsByClassName("card")[0];
     if (cardcont.getElementsByClassName("active").length != 0 || cardcont.getElementsByClassName("hover").length != 0) {
-        card.style.webkitTransform = "rotateY(-180deg)";
         card.style.transform = "rotateY(-180deg)";
+        card.style.webkitTransform = "rotateY(-180deg)";
     }
     else {
-        card.style.webkitTransform = "rotateY(0deg)";
         card.style.transform = "rotateY(0deg)";
+        card.style.webkitTransform = "rotateY(0deg)";
     }
 }
 

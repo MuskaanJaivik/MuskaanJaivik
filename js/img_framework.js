@@ -10,12 +10,19 @@ function InitSlideShow(target, img_path = "img/slides/") {
     target.appendChild(slide1);
     target.appendChild(slide2);
     MatchSlideSize(target);
-    slide1.style.left = "0%";
-    slide2.style.left = "100%";
+    slide1.style.left = "0px";
+    slide2.style.left = "0px";
+    slide2.style.opacity = "0";
+    slide1.style.transform = "translateX(0%)";
+    slide2.style.transform = "translateX(100%)";
     slide1.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
     slide2.style.backgroundImage = 'url("' + img_path + "img1.jpg" + '")';
 
-    setTimeout(function(){StartSlide(target, img_path)}, 4000);
+    setTimeout(function(){ 
+        if (document.getElementById("banner_text"))
+            document.getElementById("banner_text").style.opacity = "0";
+        StartSlide(target, img_path)
+    }, 4000);
     if (!IsMobilePhone()) OnResizeStop(function(){MatchSlideSize(target)});
 
 }
@@ -38,42 +45,56 @@ function MatchSlideSize(target) {
 }
 
 // Start Slide
-var slide_iteration = 0;
+//
 function StartSlide(target, img_path) {
-    if (document.getElementById("banner_text"))
-        document.getElementById("banner_text").style.opacity = "0";
-    slide_iteration++;
     var left_slide;
     var right_slide;
-    if (activate_log) console.log("[0]: " + parseInt(target.getElementsByClassName("img_slide")[0].style.left, 10) + " [1]: " + parseInt(target.getElementsByClassName("img_slide")[1].style.left, 10));
-    if (parseInt(target.getElementsByClassName("img_slide")[0].style.left, 10) < parseInt(target.getElementsByClassName("img_slide")[1].style.left, 10)) {
+    if (target.getElementsByClassName("img_slide")[0].style.transform == "translateX(0%)"){
         left_slide = target.getElementsByClassName("img_slide")[0];
         right_slide = target.getElementsByClassName("img_slide")[1];
     } else {
         left_slide = target.getElementsByClassName("img_slide")[1];
         right_slide = target.getElementsByClassName("img_slide")[0];
     }
-    // Switch
-    left_slide.style.transform = "translateX(-" + slide_iteration * 100 + "%)";
-    right_slide.style.transform = "translateX(-" + slide_iteration * 100 + "%)";
-    left_slide.style.webkitTransform = "translateX(-" + slide_iteration * 100 + "%)";
-    right_slide.style.webkitTransform = "translateX(-" + slide_iteration * 100 + "%)";
-    // Set Back Left
-    setTimeout(function(){
-        left_slide.style.left = (slide_iteration+1) * 100 + "%";
-        var next_num = Number(parseInt(right_slide.style.backgroundImage.replace(/\D/g,''), 10)) + 1;
-        var next_file = img_path + "img" + next_num + ".jpg";
-        if (activate_log) console.log(next_file);
-        if (FileExists(next_file))
-            left_slide.style.backgroundImage = 'url("' + next_file + '")';
-        else {
-            left_slide.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
-        }
-        if (activate_log) console.log(left_slide.style.backgroundImage);
-        setTimeout(function(){StartSlide(target, img_path)}, 9000);
-    }, 1550);
+    left_slide.style.opacity = "1";
+    right_slide.style.opacity = "1";
+    left_slide.style.transform = "translateX(-100%)";
+    right_slide.style.transform = "translateX(0%)";
+    setTimeout(function() {
+        left_slide.style.opacity = "0";
+        left_slide.style.transform = "translateX(100%)";
+        setTimeout(function(){
+            left_slide.opacity = "1";
+            setTimeout(function() {
+                ChangeSlideImage(target, img_path);
+                StartSlide(target, img_path);
+            }, 3000);
+        }, 1500);
+    }, 1500);
 }
 
+function ChangeSlideImage(target, img_path) {
+    var left_slide;
+    var right_slide;
+    if (target.getElementsByClassName("img_slide")[0].style.transform == "translateX(0%)"){
+        left_slide = target.getElementsByClassName("img_slide")[0];
+        right_slide = target.getElementsByClassName("img_slide")[1];
+    } else {
+        left_slide = target.getElementsByClassName("img_slide")[1];
+        right_slide = target.getElementsByClassName("img_slide")[0];
+    }
+    var next_num = Number(parseInt(left_slide.style.backgroundImage.replace(/\D/g,''), 10)) + 1;
+    var next_file = img_path + "img" + next_num + ".jpg";
+    if (activate_log) console.log(next_file);
+    if (FileExists(next_file))
+        right_slide.style.backgroundImage = 'url("' + next_file + '")';
+    else {
+        right_slide.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
+    }
+}
+
+// Check file existance
+//
 function FileExists(file_url) {
     try {
         var http = new XMLHttpRequest();

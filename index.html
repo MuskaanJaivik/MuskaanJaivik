@@ -19,7 +19,7 @@
             <!-- Top Banner -->
             <div id="hp_banner">
                 <div id="banner_text"><span>Welcome to</span><span>Muskaan Jaivik SHG</span></div>
-                <i class="material-icons">&#xE313;</i>
+                <i class="material-icons" id="scroll_down_button">&#xE313;</i>
             </div>
             <script defer>
                 setTimeout(function(){InitSlideShow(document.getElementById("hp_banner"));}, 2000);
@@ -78,30 +78,33 @@
 
             <!-- Organic Farming Principles -->
             <div id="principle_frame">
-                <div id="principle_title">Principle of Organic Agriculture</div>
+                <!--<div id="principle_title">Principles of Organic Agriculture</div>-->
+                <abbr id="principle_title" title="The Principles of Organic Agriculture were established by the IFOAM in September 2005. They are aspirations for organic farming.">
+                    Principles of Organic Agriculture
+                </abbr>
                 <div id="principle_container">
-                    <div id="principle">
+                    <div class="principle" id="princ_health">
                         <h1>Principle of <br><b>HEALTH</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should sustain and enhance the health of soil,
                             plant, animal, human and planet as one and indivisible.
                         </div>
                     </div>
-                    <div id="principle">
+                    <div class="principle" id="princ_eco">
                         <h1>Principle of <br><b>ECOLOGY</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should be based on living ecological systems and
                             cycles, work with them, emulate them and help sustain them.
                         </div>
                     </div>
-                    <div id="principle">
+                    <div class="principle" id="princ_fair">
                         <h1>Principle of <br><b>FAIRNESS</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should build on relationships that ensure fairness
                             with regard to the common environment and life opportunities.
                         </div>
                     </div>
-                    <div id="principle">
+                    <div class="principle" id="princ_care">
                         <h1>Principle of <br><b>CARE</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should be managed in a precautionary and responsible
@@ -110,6 +113,12 @@
                     </div>
                 </div>
             </div>
+            <script async>
+                document.getElementById("princ_health").addEventListener("click", function() {window.open("https://www.ifoam.bio/en/principles-organic-agriculture/principle-health", "blank")})
+                document.getElementById("princ_eco").addEventListener("click", function() {window.open("https://www.ifoam.bio/en/principles-organic-agriculture/principle-ecology", "blank")})
+                document.getElementById("princ_fair").addEventListener("click", function() {window.open("https://www.ifoam.bio/en/principles-organic-agriculture/principle-fairness", "blank")})
+                document.getElementById("princ_care").addEventListener("click", function() {window.open("https://www.ifoam.bio/en/principles-organic-agriculture/principle-care", "blank")})
+            </script>
 
             <!-- Video -->
             <div id="vid_container_frame">
@@ -126,6 +135,6 @@
 
         </div>
 
-        <script src="js/hpanim.js" type="text/javascript"></script>
+        <script src="js/hp_script.js" type="text/javascript"></script>
     </body>
 </html>

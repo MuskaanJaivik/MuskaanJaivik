@@ -4,7 +4,7 @@
     top: 0px;
     z-index: 20;
     margin: 0px;
-    width: 100%;
+    width: 100vw;
     /*background-color: rgb(168,207,56);*/
     background-color: yellowgreen;
     -webkit-box-shadow: 0px 2px 4px gray;

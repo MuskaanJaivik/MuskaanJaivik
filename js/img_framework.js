@@ -9,12 +9,22 @@ function InitSlideShow(target, img_path = "img/slides/") {
     slide2.setAttribute("class", "img_slide");
     target.appendChild(slide1);
     target.appendChild(slide2);
+    MatchSlideSize(target);
     slide1.style.left = "0%";
     slide2.style.left = "100%";
     slide1.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
     slide2.style.backgroundImage = 'url("' + img_path + "img1.jpg" + '")';
 
     setTimeout(function(){StartSlide(target, img_path)}, 4000);
+    OnResizeStop(function(){MatchSlideSize(target)});
+}
+
+function MatchSlideSize(target) {
+    for (var i = 0; i < target.getElementsByClassName("img_slide").length; i++) {
+        target.getElementsByClassName("img_slide")[i].style.top = "100px";
+        target.getElementsByClassName("img_slide")[i].style.width = target.offsetWidth + "px";
+        target.getElementsByClassName("img_slide")[i].style.height = target.offsetHeight + "px";
+    }
 }
 
 // Start Slide
@@ -49,7 +59,7 @@ function StartSlide(target, img_path) {
         }
         if (activate_log) console.log(left_slide.style.backgroundImage);
         setTimeout(function(){StartSlide(target, img_path)}, 9000);
-    }, 1050);
+    }, 1550);
 }
 
 function FileExists(file_url) {
@@ -98,7 +108,6 @@ function CreateStaticImageGrid(container, img_path="/img/wall/", img_ratio = 192
             // Delete Img Parcels
             while (frame.getElementsByClassName("img_parcel").length > 0)
                 frame.removeChild(frame.getElementsByClassName("img_parcel")[0]);
-
             // Rasterize & Adjust Frame Size
             data = RasterizeContainerStatic(container, img_ratio, Math.round((container.offsetWidth / org_width) * img_per_row));
             par_width = data[0];
@@ -106,17 +115,15 @@ function CreateStaticImageGrid(container, img_path="/img/wall/", img_ratio = 192
             par_num_x = data[2];
             par_num_y = data[3];
             AdjustFrameSize(container, frame, par_width, par_height);
-
             // Reset on Display
             img_on_display = [];
-
             // Create Parcels
             for (var i = 0; i < par_num_x * par_num_y; i++)
                 frame.appendChild(CreateParcel(par_width - 2 * img_margin_px, par_height - 2 * img_margin_px, img_margin_px));
-
             // Restart Animation
             if (is_animated)
                 StartAnimation(frame, switch_time, true);
+            
         });
 
     });

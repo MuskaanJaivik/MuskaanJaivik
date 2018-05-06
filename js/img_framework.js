@@ -17,6 +17,8 @@ function InitSlideShow(target, img_path = "img/slides/") {
     slide2.style.transform = "translateX(100%)";
     slide1.style.backgroundImage = 'url("' + img_path + "img0.jpg" + '")';
     slide2.style.backgroundImage = 'url("' + img_path + "img1.jpg" + '")';
+    target.style.backgroundImage = "none";
+    target.style.backgroundColor = "inherit";
 
     setTimeout(function(){ 
         if (document.getElementById("banner_text"))
@@ -68,7 +70,7 @@ function StartSlide(target, img_path) {
             setTimeout(function() {
                 ChangeSlideImage(target, img_path);
                 StartSlide(target, img_path);
-            }, 3000);
+            }, 6000);
         }, 1500);
     }, 1500);
 }
@@ -363,7 +365,7 @@ function loadJSON(callback, file) {
         }
     };
     xobj.send(null);
-  }
+}
 
 // Get Topnav Height
 //

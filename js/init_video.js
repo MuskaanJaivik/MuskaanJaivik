@@ -68,8 +68,13 @@ function OnPlayerStateChange(event) {
 }
 
 function KeepPlaying() {
-    if (!is_playing)
-        player.playVideo();
+    if (!is_playing) {
+        try {
+            player.playVideo();
+        } catch(err) {
+            setTimeout(KeepPlaying, 500);
+        }
+    }
     setTimeout(KeepPlaying, 3000);
 }
 

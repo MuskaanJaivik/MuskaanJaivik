@@ -102,7 +102,7 @@ function AddButtonClick() {
     try {
         document.getElementById("scroll_down_button").addEventListener("click", function(){
             delta_scroll = 1;
-            HandleScroll();
+            HandleScroll(true);
         });
     } catch(err) {
         setTimeout(AddButtonClick, 500);
@@ -111,18 +111,18 @@ function AddButtonClick() {
 
 // Handle Scroll Event
 //
-function HandleScroll() {
-    if (HasTouchScreen())
-        return;
+function HandleScroll(force_scroll = false) {
     document.getElementById("scroll_down_button").style.opacity = 1 - window.scrollY / (window.innerHeight * 0.2);
-    if (in_scroll)
+    if (HasTouchScreen() && !force_scroll)
+        return;
+    if (in_scroll || browser == "edge" || browser == "internet explorer")
         return;
     // Scrolled Down
     if (delta_scroll > 0) {
         // from top of page
         if (scroll_position  < document.getElementById("hp_banner").offsetHeight) {
             //window.scrollTo(0, document.getElementById("hp_banner").offsetHeight);
-            TransferTo(document.getElementById("hp_banner").offsetHeight);
+            TransferTo(document.getElementById("hp_banner").offsetHeight + 10);
         }
     }
     // Scrolled Up

@@ -44,11 +44,11 @@
 
             <!-- Product Section -->
             <div id="hps_product">
-                <div class="textsec"><h1>Our Crops<hr></h1><input value="view all" type="button" onclick="location.href='produce';"/></div>
-                <div id="cfback"><div id="hps_cardframe"></div></div>
-                <div class="textsec">
-                    Our group grows a wide variety of crops such as Rice, Wheat, Maize, Peas and many more.
+                <div class="textsec"><h1>Our Crops<hr></h1>
+                    <p>Our group grows a wide variety of crops such as Rice, Wheat, Maize, Peas and many more.</p>
                 </div>
+                <div id="cfback"><div id="hps_cardframe"></div></div>
+                <div class="textsec" id="product_button"><input value="view all" type="button" onclick="location.href='produce';"/></div>
             </div>
             <script src="js/produce.js"></script>
             <script defer>LoadLine(["Rice", "Maize", "Wheat", "Potato", "Tomato", "Peas", "Apple", "Anardana", "Pumpkin"], document.getElementById("hps_cardframe"))</script>
@@ -59,17 +59,13 @@
                     Participatory Guarantee Systems are locally focused quality assurance systems.
                     They certify producers based on active participation of stakeholders and are 
                     built on a foundation of trust, social networks and knowledge exchange.
-                </q><small class="source">&#x02500 <abbr title="International Federation of Organic Agriculture Movements">IFOAM</abbr></small>
+                </q>
+                <br><small class="source"><abbr title="International Federation of Organic Agriculture Movements">IFOAM</abbr></small>
             </div>
 
             <!-- Image Section -->
             <div id="hp_img_wall_container"><div id="hp_img_wall"></div></div>
             <script defer>
-                /*setTimeout(function(){
-                    var img_per_row = Math.round(window.innerWidth / 480);
-                    var grid = CreateStaticImageGrid(document.getElementById("hp_img_wall"), "img/wall/", 1920/1080, img_per_row, 2);
-                }, 2000);
-                */
                 function InitHPGrid() {
                     try { 
                         var img_per_row = Math.round(window.innerWidth / 480);
@@ -96,12 +92,12 @@
 
             <!-- Organic Farming Principles -->
             <div id="principle_frame">
-                <!--<div id="principle_title">Principles of Organic Agriculture</div>-->
                 <abbr id="principle_title" title="The Principles of Organic Agriculture were established by the IFOAM in September 2005. They are aspirations for organic farming.">
                     Principles of Organic Agriculture
                 </abbr>
                 <div id="principle_container">
                     <div class="principle" id="princ_health">
+                        <i class="material-icons">healing</i>
                         <h1>Principle of <br><b>HEALTH</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should sustain and enhance the health of soil,
@@ -109,6 +105,7 @@
                         </div>
                     </div>
                     <div class="principle" id="princ_eco">
+                        <i class="material-icons">terrain</i>
                         <h1>Principle of <br><b>ECOLOGY</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should be based on living ecological systems and
@@ -116,6 +113,7 @@
                         </div>
                     </div>
                     <div class="principle" id="princ_fair">
+                        <i class="material-icons">compare_arrows</i>
                         <h1>Principle of <br><b>FAIRNESS</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should build on relationships that ensure fairness
@@ -123,6 +121,7 @@
                         </div>
                     </div>
                     <div class="principle" id="princ_care">
+                        <i class="material-icons">flare</i>
                         <h1>Principle of <br><b>CARE</b></h1>
                         <div class="principle_box">
                             Organic Agriculture should be managed in a precautionary and responsible

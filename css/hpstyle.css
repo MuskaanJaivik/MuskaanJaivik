@@ -101,19 +101,27 @@ body {
   padding-top: 0px;
 }
 
+#hp_content #hps_product .textsec p {
+  display: inline-block;
+  margin-top: 0px !important;
+}
+
 #hp_content #hps_product .textsec h1 {
   float: left;
 }
 
 #hp_content #hps_product .textsec input {
-  float: right;
   margin-top: 35px;
   width: 100px;
   height: 45px;
+  margin-top: 0px;
+  /*position: relative;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  transform: translateX(-50%);*/
   border: none;
   background-color: lightgoldenrodyellow;
   outline: none;
-  border: 0px;
   border-radius: 3px;
   color: #555555;
   font-family: "Roboto", sans-serif;
@@ -164,8 +172,12 @@ body {
   margin-bottom: 150px;
   text-align: center;
 }
+#hp_content #pgs_quote q {
+  font-size: 1.2em;
+}
 #hp_content #pgs_quote .source {
   margin-left: 1em;
+  line-height: 3.5em;
 }
 #hp_content #pgs_quote .source abbr {
   text-decoration: none;
@@ -235,7 +247,8 @@ body {
 }
 
 #hp_content #principle_frame #principle_title {
-  color: #222222;
+  /*color: #222222;*/
+  color: white;
   display: block;
   text-decoration: none;
   text-align: center;
@@ -269,7 +282,7 @@ body {
   font-family: "Roboto", sans-serif;
   color: #222222;
   width: 250px;
-  height: 300px;
+  height: 390px;
   margin: 1vw;
   background-color: snow;
   border-radius: 2px;
@@ -278,6 +291,26 @@ body {
   -webkit-transition: all 0.5s ease-out;
   -o-transition: all 0.5s ease-out;
   transition: all 0.5s ease-out;
+}
+#princ_health b, #princ_health .material-icons {
+  color: yellowgreen !important;
+}
+#princ_eco b, #princ_eco .material-icons {
+  color: olivedrab !important;
+}
+#princ_fair b, #princ_fair .material-icons {
+  color: skyblue !important;
+}
+#princ_care b, #princ_care .material-icons {
+  color: peru !important;
+}
+.principle .material-icons {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 30px;
+  font-size: 40px;
 }
 
 #hp_content .principle:hover {
@@ -293,9 +326,7 @@ body {
   font-weight: normal;
   font-size: 25px;
   text-align: center;
-}
-#hp_content .principle h1 b {
-  color: olivedrab;
+  margin-bottom: 30px;
 }
 #hp_content .principle .principle_box {
   position: relative;

@@ -92,7 +92,11 @@ body {
   width: 100%;
   background-color: rgb(215, 235, 173);
   margin-top: 100px;
-  padding-bottom: 50px;
+  padding-bottom: 20px;
+}
+
+#hp_content #hps_product h1 {
+  margin-top: 80px;
 }
 
 #hp_content #hps_product .textsec {
@@ -168,12 +172,14 @@ body {
   PGS Quote
 ************/
 #hp_content #pgs_quote {
-  margin-top: 150px;
-  margin-bottom: 150px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   text-align: center;
 }
 #hp_content #pgs_quote q {
-  font-size: 1.2em;
+  font-size: 1.6em;
+  font-weight: bold;
+  color: darkolivegreen;
 }
 #hp_content #pgs_quote .source {
   margin-left: 1em;
@@ -182,6 +188,18 @@ body {
 #hp_content #pgs_quote .source abbr {
   text-decoration: none;
   border-bottom: none;
+}
+
+@media only screen and (max-width: 1000px) and (min-width: 600px) {
+  #hp_content #pgs_quote q {
+    font-size: 3vw;
+  }
+}
+
+@media only screen and (max-width: 599px) {
+  #hp_content #pgs_quote q {
+    font-size: 24px;
+  }
 }
 
 /***********
@@ -239,8 +257,8 @@ body {
 
 #hp_content #principle_frame {
   width: 100%;
-  padding-top: 50px;
-  padding-bottom: 50px;
+  padding-top: 80px;
+  padding-bottom: 80px;
   /*background-color: powderblue;*/
   background-color: peru;
   /*background-color: rgb(203, 168,143);*/
@@ -404,9 +422,6 @@ body {
   height: 30vh;
   margin-top: 30px;
   background-color: rgb(215, 235, 173);
-  border-top: solid;
-  border-color: #555555;
-  border-width: 2px;
 }
 
 #hp_content .footer #bottom_nav_bar {

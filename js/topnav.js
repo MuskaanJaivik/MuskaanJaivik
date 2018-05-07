@@ -28,11 +28,11 @@ logo_text.addEventListener("click", function(){
 
 // Top Nav Entries
 //
-var contact = createTab("Contact", "/contact/")
-var photos = createTab("Photos", "/photos/")
-var blog = createTab("Blog", "/blog/")
-var projects = createTab("Projects", "/projects/")
-var produce = createTab("Produce", "/produce/")
+var contact = createTab("Contact", "/MuskaanJaivik/contact/index.html")
+var photos = createTab("Photos", "/MuskaanJaivik/photos/index.html")
+var blog = createTab("Blog", "/MuskaanJaivik/blog/index.html")
+var projects = createTab("Projects", "/MuskaanJaivik/projects/index.html")
+var produce = createTab("Produce", "/MuskaanJaivik/produce/index.html")
 
 // Set Active
 switch (document.getElementsByTagName("body")[0].getAttribute("id")) {

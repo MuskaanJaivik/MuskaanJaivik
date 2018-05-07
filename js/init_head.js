@@ -50,6 +50,11 @@ var scr = AddElement("script");
 scr.setAttribute("src", path_suffix + "js/img_framework.js");
 scr.setAttribute("id", "img_framework_script");
 
+// Draw Logo
+var scr = AddElement("script");
+scr.setAttribute("src", path_suffix + "js/draw_logo.js");
+scr.setAttribute("id", "draw_logo_script");
+
 function AddElement(tag) {
     var element = document.createElement(tag);
     head.appendChild(element);

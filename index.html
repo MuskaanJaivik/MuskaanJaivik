@@ -147,8 +147,23 @@
 
             <!-- Footer -->
             <div class="footer">
-                <div class="textsec">You scrolled all the way down to the bottom... now what?</div>
+                <div id="bottom_nav_bar">
+                    <div class="bot_nav_item" id="bn_home">HOME</div>
+                    <div class="bot_nav_item" id="bn_prod">PRODUCE</div>
+                    <div class="bot_nav_item" id="bn_proj">PROJECTS</div>
+                    <div class="bot_nav_item" id="bn_blog">BLOG</div>
+                    <div class="bot_nav_item" id="bn_phot">PHOTOS</div>
+                    <div class="bot_nav_item" id="bn_cont">CONTACT</div>
+                </div>
             </div>
+            <script defer>
+                document.getElementById("bn_home").addEventListener("click", function() {window.open("/", "_self")})
+                document.getElementById("bn_prod").addEventListener("click", function() {window.open("/produce/", "_self")})
+                document.getElementById("bn_proj").addEventListener("click", function() {window.open("/projects/", "_self")})
+                document.getElementById("bn_blog").addEventListener("click", function() {window.open("/blog/", "_self")})
+                document.getElementById("bn_phot").addEventListener("click", function() {window.open("/photos/", "_self")})
+                document.getElementById("bn_cont").addEventListener("click", function() {window.open("/contact/", "_self")})
+            </script>
 
         </div>
 

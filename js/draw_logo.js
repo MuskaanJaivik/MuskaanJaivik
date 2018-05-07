@@ -1,6 +1,7 @@
 function drawLogo(canvas, color) {
-    var h = canvas.height;
-    var w = canvas.width;
+    console.log("drawLogo");
+    var h = canvas.offsetHeight;
+    var w = canvas.offsetWidth;
     var scale = w/643;
 
     var off_y = (h-scale)/2;
@@ -76,3 +77,5 @@ function drawLogo(canvas, color) {
     ctx.closePath();
     ctx.fill();
 }
+
+function HpDrawLogo(canvas, color) { setTimeout(function(){drawLogo(canvas, color)} , 200)}

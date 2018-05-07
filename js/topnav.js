@@ -20,10 +20,10 @@ logo.appendChild(logo_text);
 
 // Add Logo Link
 logo.addEventListener("click", function(){
-    window.open("/", "_self");
+    window.open("/MuskaanJaivik/index.html", "_self");
 });
 logo_text.addEventListener("click", function(){
-    window.open("/", "_self");
+    window.open("/MuskaanJaivik/index.html", "_self");
 });
 
 // Top Nav Entries

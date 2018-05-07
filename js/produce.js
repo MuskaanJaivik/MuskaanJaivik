@@ -207,7 +207,7 @@ function LoadCards(products, frame) {
         for (var i = 0; i < products.length; i++){
             var pr = FindProduct(products[i], produce_list);
             if (pr == -1) continue;
-            else addCard(produce_list[pr].name, "../img/produce/" + produce_list[pr].name.toLowerCase() + ".jpg", produce_list[pr].quantity, produce_list[pr].harvest, produce_list[pr].available, frame);
+            else addCard(produce_list[pr].name, "/MuskaanJaivik/img/produce/" + produce_list[pr].name.toLowerCase() + ".jpg", produce_list[pr].quantity, produce_list[pr].harvest, produce_list[pr].available, frame);
         }
         ResizeCards();
         TruncLine();
